@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "0225VEA3XiGdI5e69Vt5Ux",
+    "name" : "m_Reset_Load_Info",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010Q2I1700000000007B"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "\nConverted using O2N Version: O2N : Framesh1ft Tool V3.03",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "objectRefs" : [ ]
+}

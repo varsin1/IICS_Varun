@@ -1,0 +1,157 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ECIeDmUhGdwOLIF-gt-35407144-2021-06-22T20:45:54.484Z::tf.xml</types1:EntryId>
+      <types1:Name>StrataTaskFlow</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2021-06-22T20:45:54Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="StrataTaskFlow"
+                   name="StrataTaskFlow"
+                   overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description=""
+                      name="ClarityEncounterDataToFlatFile"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:ClarityEncounterDataMappingTask</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="ClarigySurgicalStaffingToFlatFile"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EpicSurgicalStaffingMappingTask</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                  </options>
+               </field>
+               <field description="" name="FlatFilesToStataSftp" type="string"/>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="j3wg4fhg" targetId="j3wg4fhf"/>
+               </start>
+               <container id="j3wg4fhf" type="parallel">
+                  <title>ImportDataForStrata</title>
+                  <flow id="j3wg4fhj">
+                     <eventContainer id="kpzlfmtm">
+                        <service id="j3wg4fhu">
+                           <title>ClarityEncounterDataToFlatFile</title>
+                           <serviceName>ICSExecuteDataTask</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                              <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                              <parameter name="Task Name" source="constant" updatable="true">ClarityEncounterDataMappingTask</parameter>
+                              <parameter name="GUID" source="constant" updatable="true">32NfgXstdPUgLDnTMZSsaU</parameter>
+                              <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                              <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                              <parameter name="taskField" source="nested">
+                                 <operation source="field" to="ClarityEncounterDataMappingTask">temp.ClarityEncounterDataToFlatFile</operation>
+                              </parameter>
+                           </serviceInput>
+                           <serviceOutput/>
+                        </service>
+                        <events>
+                           <catch faultField="temp.ClarityEncounterDataToFlatFile/fault"
+                                  id="kpzlfmtk"
+                                  interrupting="true"
+                                  name="error">
+                              <suspend/>
+                           </catch>
+                           <catch faultField="temp.ClarityEncounterDataToFlatFile/fault"
+                                  id="kpzlfmtl"
+                                  interrupting="true"
+                                  name="warning"/>
+                        </events>
+                     </eventContainer>
+                     <link id="j3wg4fhk" targetId="j3wg4fhf" type="containerLink"/>
+                  </flow>
+                  <flow id="j3wg4fhm">
+                     <eventContainer id="kpzlfmts">
+                        <service id="j3wg4fi4">
+                           <title>ClarigySurgicalStaffingToFlatFile</title>
+                           <serviceName>ICSExecuteDataTask</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                              <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                              <parameter name="Task Name" source="constant" updatable="true">EpicSurgicalStaffingMappingTask</parameter>
+                              <parameter name="GUID" source="constant" updatable="true">46fkOMrwqhhbXuZXpooWi6</parameter>
+                              <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                              <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                              <parameter name="taskField" source="nested">
+                                 <operation source="field" to="EpicSurgicalStaffingMappingTask">temp.ClarigySurgicalStaffingToFlatFile</operation>
+                              </parameter>
+                           </serviceInput>
+                           <serviceOutput/>
+                        </service>
+                        <events>
+                           <catch faultField="temp.ClarigySurgicalStaffingToFlatFile/fault"
+                                  id="kpzlfmtq"
+                                  interrupting="true"
+                                  name="error">
+                              <suspend/>
+                           </catch>
+                           <catch faultField="temp.ClarigySurgicalStaffingToFlatFile/fault"
+                                  id="kpzlfmtr"
+                                  interrupting="true"
+                                  name="warning"/>
+                        </events>
+                     </eventContainer>
+                     <link id="j3wg4fhn" targetId="j3wg4fhf" type="containerLink"/>
+                  </flow>
+                  <link id="j3wg4fhi" targetId="j3wg4fhj" type="containerLink"/>
+                  <link id="kpzlfmu3" targetId="kpzlfmu9"/>
+                  <link id="j3wg4fhl" targetId="j3wg4fhm" type="containerLink"/>
+               </container>
+               <eventContainer id="kpzlfmu9">
+                  <service id="kpzlfmu2">
+                     <title>FlatFilesToStataSftp</title>
+                     <serviceName>DIExecuteServiceTaskIngestionTaskImpl</serviceName>
+                     <serviceGUID/>
+                     <serviceInput/>
+                     <serviceOutput/>
+                  </service>
+                  <link id="kpzlfmu4" targetId="c"/>
+                  <events>
+                     <catch faultField="temp.FlatFilesToStataSftp/fault"
+                            id="kpzlfmu8"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>2sQAkQccSqGlUa1uGGjSmY</types1:GUID>
+      <types1:DisplayName>StrataTaskFlow</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-09-01T19:13:23.968Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
