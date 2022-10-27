@@ -1,0 +1,97 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>paaaa-gt-21775164-2022-09-13T19:12:42.245Z::conn.xml</types1:EntryId>
+      <types1:Name>VSAmazonS3</types1:Name>
+      <types1:ParentFlowIds>moHXbeKLUaaaaab-gt-16098490-2022-09-14T20:08:12.05Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:as09</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2022-09-13T19:12:42Z</types1:CreationDate>
+      <types1:ModifiedBy>vasingh@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-09-15T17:01:57Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>vasingh@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-09-15T17:02:06Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/VSAmazonS3/VSAmazonS3.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="VSAmazonS3"
+                     label="VSAmazonS3"
+                     name="VSAmazonS3">
+            <description/>
+            <tags>.agent:as09</tags>
+            <agent>as09</agent>
+            <attributes>
+               <attribute encrypted="false" name="accessKey" value="AKIAXSBDLVXPYYWAC6FH"/>
+               <attribute encrypted="true" name="secretKey" value=""/>
+               <attribute encrypted="false" name="policy" value=""/>
+               <attribute encrypted="false" name="amazonS3Endpoint" value=""/>
+               <attribute encrypted="false" name="region" value=""/>
+               <attribute encrypted="false" name="encryptObjects" value="false"/>
+               <attribute encrypted="false" name="encryptionAlgorithm" value=""/>
+               <attribute encrypted="true" name="encryptionKey" value=""/>
+               <attribute encrypted="true" name="encryptionPassword" value=""/>
+            </attributes>
+            <consumers>
+               <consumer enabled="true" name="AwsS3Monitor" typeName="AwsS3Monitor">
+                  <description>This event source can be used to read new objects from Amazon S3 storage.</description>
+                  <attributes>
+                     <attribute encrypted="false" name="bucketName" value="vikesh"/>
+                     <attribute encrypted="false"
+                                name="prefix"
+                                value="varunsingh/OutboundTestFailed/"/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value="10"/>
+                     <attribute encrypted="false" name="deleteReadObjects" value="No"/>
+                     <attribute encrypted="false" name="moveToBucket" value="vikesh"/>
+                     <attribute encrypted="false"
+                                name="movePrefix"
+                                value="varunsingh/OutboundTestArchive/"/>
+                     <attribute encrypted="false" name="moveFailedToBucket" value="vikesh"/>
+                     <attribute encrypted="false"
+                                name="moveFailedPrefix"
+                                value="varunsingh/TestFailed"/>
+                     <attribute encrypted="false" name="directoryName" value=""/>
+                     <attribute encrypted="false" name="directoryNameFailed" value=""/>
+                     <attribute encrypted="false" name="maxRetryInterval" value="3600"/>
+                     <attribute encrypted="false" name="contentFormat" value="PlainText"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+            </consumers>
+            <producers>
+               <producer enabled="true" name="AwsS3Writer" typeName="AwsS3Writer">
+                  <description>Use this event target to write new objects to the Amazon S3 storage.</description>
+                  <attributes>
+                     <attribute encrypted="false" name="bucketName" value="vikesh"/>
+                     <attribute encrypted="false" name="storageClass" value="STANDARD"/>
+                  </attributes>
+               </producer>
+            </producers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           supportsPublishSkipMetadataRefresh="false"
+                           type="AWSS3"
+                           uuid="fb38e8f3-3552-4837-8bcd-6f938183d3dd">
+               <description>Amazon Simple Storage Service (S3) Connector.</description>
+            </javaConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>8uRjE6viWlRdHIxUY4wwmh</types1:GUID>
+      <types1:DisplayName>VSAmazonS3</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-27T17:17:57.046Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

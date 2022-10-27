@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "8uRjE6viWlRdHIxUY4wwmh",
+    "name" : "VSAmazonS3",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "paaaa-gt-21775164-2022-09-13T19:12:42.245Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}

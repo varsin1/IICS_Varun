@@ -1,0 +1,24 @@
+{
+  "objectInfo" : {
+    "id" : "4pP7HCVBJwwb9C7uFj3N0O",
+    "name" : "AmazonS3Read",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6NFuxTtlI20hELl-gt-22117307-2022-09-13T19:40:11.925Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "INVALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ ]
+}
