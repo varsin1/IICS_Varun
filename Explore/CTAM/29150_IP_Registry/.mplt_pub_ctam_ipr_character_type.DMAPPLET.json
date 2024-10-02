@@ -1,0 +1,28 @@
+{
+  "objectInfo" : {
+    "id" : "0IuAaGjlS33gCvMb4FLBsY",
+    "name" : "mplt_pub_ctam_ipr_character_type",
+    "type" : "DMAPPLET",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010Q2I4000000000000J"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "Mapplet pushed from PC to ICS : mplt_pub_ctam_ipr_character_type",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2024-10-02T19:44:03.165Z",
+  "objectRefs" : [ ]
+}
