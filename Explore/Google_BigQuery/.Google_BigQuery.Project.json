@@ -1,0 +1,23 @@
+{
+  "objectInfo" : {
+    "id" : "8gRDAwMZx9PeihPYxzjI08",
+    "name" : "Google_BigQuery",
+    "type" : "Project",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : null,
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2024-10-02T19:47:16.954Z",
+  "objectRefs" : [ ]
+}
