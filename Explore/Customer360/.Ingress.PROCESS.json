@@ -1,0 +1,25 @@
+{
+  "objectInfo" : {
+    "id" : "lo6QrfRjGolgwcXlXLAj8R",
+    "name" : "Ingress",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "gcnPCOkSSHCwkNm-gt-20285087-2023-04-20T18:30:25.102Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2024-10-02T19:39:50.727Z",
+  "objectRefs" : [ ]
+}

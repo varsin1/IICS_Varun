@@ -1,0 +1,364 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>A5tIS7T1cnFKi9z-gt-20736976-2023-04-20T18:30:29.423Z::pd.xml</types1:EntryId>
+      <types1:Name>MDMFlow</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-04-20T18:30:29Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="MDMFlow"
+                  name="MDMFlow"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="jobDefinitionId"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="runtimeParameters"
+                          required="true"
+                          type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="skipCleanup" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="jobInstanceId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="fault" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowedRoles>
+                     <role>Admin</role>
+                     <role>Designer</role>
+                     <role>Business360ProcessExecutor</role>
+                  </allowedRoles>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="jt8rig4p" targetId="jxw23ene"/>
+               </start>
+               <eventContainer id="jxw23ene">
+                  <service id="jt8rig4o">
+                     <title>Start Job</title>
+                     <serviceName>StartJob</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="jobDefinitionId" source="field" updatable="true">input.jobDefinitionId</parameter>
+                        <parameter name="runtimeParameters" source="field" updatable="true">input.runtimeParameters</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="jxw23eng">
+                     <milestone id="jxw23enr">
+                        <title>Accepted</title>
+                        <httpStatus>202</httpStatus>
+                        <link id="k3fr3g4g" targetId="kdgpwfc0"/>
+                     </milestone>
+                     <eventContainer id="kdgpwfc0">
+                        <service id="k3fr3g4f">
+                           <title>ETL Run Tasklow</title>
+                           <serviceName>ETL</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kdgpwfc2">
+                           <link id="kdgpwfc3" targetId="kdgpwfc0" type="containerLink"/>
+                        </flow>
+                        <flow id="kdgpwfc5">
+                           <service id="kdgpwfch">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">MDMFlow</parameter>
+                                 <parameter name="step" source="constant">ETL</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="kdgpwfh8" targetId="kdgpwfh7"/>
+                           </service>
+                           <throw id="kdgpwfh7">
+                              <title>Throw</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kdgpwfc1" targetId="kdgpwfc2" type="containerLink"/>
+                        <link id="k3fr3g4h" targetId="kdgpwfj8"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kdgpwfbz" interrupting="true">
+                              <link id="kdgpwfc4" targetId="kdgpwfc5" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="kdgpwfj8">
+                        <subflow id="k2gpsd45">
+                           <title>Ingress</title>
+                           <subflowGUID>lo6QrfRjGolgwcXlXLAj8R</subflowGUID>
+                           <subflowPath>Ingress</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                              <parameter name="isFileImportJob" source="constant" updatable="true">false</parameter>
+                           </input>
+                           <outputDef/>
+                        </subflow>
+                        <flow id="kdgpwfja">
+                           <link id="kdgpwfjb" targetId="kdgpwfj8" type="containerLink"/>
+                        </flow>
+                        <flow id="kdgpwfjd">
+                           <service id="kdgpwfp7">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">MDMFlow</parameter>
+                                 <parameter name="step" source="constant">Ingress</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="kdgpwg2x" targetId="kdgpwg2w"/>
+                           </service>
+                           <throw id="kdgpwg2w">
+                              <title>Throw</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kdgpwfj9" targetId="kdgpwfja" type="containerLink"/>
+                        <link id="k2gpsd5l" targetId="kdgpwfjr"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kdgpwfj3" interrupting="true">
+                              <link id="kdgpwfjc" targetId="kdgpwfjd" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="kdgpwfjr">
+                        <service id="jxw23eoh">
+                           <title>Load</title>
+                           <serviceName>Load</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kdgpwfjt">
+                           <link id="kdgpwfju" targetId="kdgpwfjr" type="containerLink"/>
+                        </flow>
+                        <flow id="kdgpwfjw">
+                           <service id="kdgpwfrs">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">MDMFlow</parameter>
+                                 <parameter name="step" source="constant">Load</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="kdgpwg3c" targetId="kdgpwg3b"/>
+                           </service>
+                           <throw id="kdgpwg3b">
+                              <title>Throw</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kdgpwfjs" targetId="kdgpwfjt" type="containerLink"/>
+                        <link id="jxw23eox" targetId="kdgpwfkc"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kdgpwfjq" interrupting="true">
+                              <link id="kdgpwfjv" targetId="kdgpwfjw" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="kdgpwfkc">
+                        <service id="jxw23eow">
+                           <title>Index</title>
+                           <serviceName>Index</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kdgpwfke">
+                           <link id="kdgpwfkf" targetId="kdgpwfkc" type="containerLink"/>
+                        </flow>
+                        <flow id="kdgpwfkh">
+                           <service id="kdgpwfud">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">MDMFlow</parameter>
+                                 <parameter name="step" source="constant">Index</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="kdgpwg3q" targetId="kdgpwg3p"/>
+                           </service>
+                           <throw id="kdgpwg3p">
+                              <title>Throw</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kdgpwfkd" targetId="kdgpwfke" type="containerLink"/>
+                        <link id="jziq857t" targetId="kdgpwfl9"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kdgpwfkb" interrupting="true">
+                              <link id="kdgpwfkg" targetId="kdgpwfkh" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="kdgpwfl9">
+                        <service id="jziq857s">
+                           <title>Match Tokenize</title>
+                           <serviceName>MatchIndex</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kdgpwflb">
+                           <link id="kdgpwflc" targetId="kdgpwfl9" type="containerLink"/>
+                        </flow>
+                        <flow id="kdgpwfle">
+                           <service id="kdgpwfwy">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">MDMFlow</parameter>
+                                 <parameter name="step" source="constant">Match Tokenize</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="kdgpwg43" targetId="kdgpwg42"/>
+                           </service>
+                           <throw id="kdgpwg42">
+                              <title>Throw</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kdgpwfla" targetId="kdgpwflb" type="containerLink"/>
+                        <link id="kdgpwflv" targetId="jxw23epu"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kdgpwfl8" interrupting="true">
+                              <link id="kdgpwfld" targetId="kdgpwfle" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <service id="jxw23epu">
+                        <title>End Step</title>
+                        <serviceName>EndStep</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                           <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           <parameter name="status" source="constant">SUCCESS</parameter>
+                           <parameter name="processName" source="constant">MDMFlow</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="jxw23enh" targetId="jxw23ene" type="containerLink"/>
+                  </flow>
+                  <flow id="jxw23enj">
+                     <assignment id="jxw4jipz">
+                        <title>Assignment to fault</title>
+                        <operation source="field" to="output.fault">output.faultInfo[1]/reason</operation>
+                        <link id="khoa8o03" targetId="khoa8o02"/>
+                     </assignment>
+                     <throw id="khoa8o02">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="jxw23enf" targetId="jxw23eng" type="containerLink"/>
+                  <link id="jxw23ept" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="jxw23end" interrupting="true">
+                        <link id="jxw23eni" targetId="jxw23enj" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>2XSupd9axeFiwZBaa13h2j</types1:GUID>
+      <types1:DisplayName>MDMFlow</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2024-10-02T19:39:50.311Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,113 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>gcnPCOkSSHCwkNm-gt-20285087-2023-04-20T18:30:25.102Z::pd.xml</types1:EntryId>
+      <types1:Name>Ingress</types1:Name>
+      <types1:ParentFlowIds>A5tIS7T1cnFKi9z-gt-20736976-2023-04-20T18:30:29.423Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-04-20T18:30:25Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Ingress"
+                  name="Ingress"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="jobInstanceId"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="isFileImportJob"
+                          required="true"
+                          type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k71p9tg2" targetId="k71p9tg1"/>
+               </start>
+               <container id="k71p9tg1" type="exclusive">
+                  <title>isFileImportJob?</title>
+                  <flow id="k71p9tg5">
+                     <service id="k9252xgt">
+                        <title>File Import</title>
+                        <serviceName>IngressSplit</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="jobInstanceId" source="field" updatable="true">input.jobInstanceId</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="k71p9tg6" targetId="k71p9tg1" type="containerLink"/>
+                  </flow>
+                  <flow id="k71p9tg8">
+                     <service id="kgmbmarr">
+                        <title>ETL flow</title>
+                        <serviceName>IngressR2H</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="jobInstanceId" source="field" updatable="true">input.jobInstanceId</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="k71p9tg9" targetId="k71p9tg1" type="containerLink"/>
+                  </flow>
+                  <link id="k71p9tg4" targetId="k71p9tg5" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$input.isFileImportJob}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kgmbmarn" targetId="jwl9eriy"/>
+                  <link id="k71p9tg7" targetId="k71p9tg8" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$input.isFileImportJob}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+               <service id="jwl9eriy">
+                  <title>Update DQ Validation Metrics</title>
+                  <serviceName>IngressUpdateMetrics</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="jobInstanceId" source="field" updatable="true">input.jobInstanceId</parameter>
+                  </serviceInput>
+                  <link id="jwl9erj0" targetId="c"/>
+               </service>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>lo6QrfRjGolgwcXlXLAj8R</types1:GUID>
+      <types1:DisplayName>Ingress</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2024-10-02T19:39:49.99Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
