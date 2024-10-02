@@ -1,0 +1,28 @@
+{
+  "objectInfo" : {
+    "id" : "6nURDE0KBUhic0GX2aPLaD",
+    "name" : "mplt_USA_Phone_Number_Standardization",
+    "type" : "DMAPPLET",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010Q2I4000000000000C"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "This mapplet standardizes the format of the phone string to have \nstandard - (nnn) nnn-nnnn\ndashes - nnn-nnn-nnnn\nno spaces - nnnnnnnnnn\nPhone_w_Extension  - (nnn) nnn-nnnn ext nnnnn\n\nTags: Standardize, USA, Customer, North America, Company, Phone",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2024-10-02T19:44:26.732Z",
+  "objectRefs" : [ ]
+}

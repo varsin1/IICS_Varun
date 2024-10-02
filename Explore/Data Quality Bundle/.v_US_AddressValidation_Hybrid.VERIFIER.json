@@ -1,0 +1,25 @@
+{
+  "objectInfo" : {
+    "id" : "3Ln8TnQifnvj5T3ddU8miT",
+    "name" : "v_US_AddressValidation_Hybrid",
+    "type" : "VERIFIER",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3Ln8TnQifnvj5T3ddU8miT"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Verifies US address in Hybrid format.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2024-10-02T19:44:26.734Z",
+  "objectRefs" : [ ]
+}

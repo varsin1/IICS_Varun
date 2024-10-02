@@ -1,0 +1,25 @@
+{
+  "objectInfo" : {
+    "id" : "6BB0C1z8qKZhQpxB61JaAz",
+    "name" : "title_case_excptn_infa",
+    "type" : "DICTIONARY",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6BB0C1z8qKZhQpxB61JaAz"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "The reference table contains list of words that are title case exceptions - capitalized major words and minor words are lowercase",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2024-10-02T19:44:26.735Z",
+  "objectRefs" : [ ]
+}

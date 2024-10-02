@@ -1,0 +1,45 @@
+{
+  "objectInfo" : {
+    "id" : "2YWkmYbZnu5lu0DMglRKiW",
+    "name" : "c_Validation_Domain",
+    "type" : "CLEANSE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "2YWkmYbZnu5lu0DMglRKiW"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Validates the domain of an email",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2024-10-02T19:44:26.733Z",
+  "objectRefs" : [ {
+    "id" : "aNtn9kYoM52jQEttl8kDE4",
+    "name" : "domain_names_infa",
+    "type" : "DICTIONARY",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "aNtn9kYoM52jQEttl8kDE4"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "This reference table contains a list of domain names.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Data Quality Bundle"
+  } ]
+}

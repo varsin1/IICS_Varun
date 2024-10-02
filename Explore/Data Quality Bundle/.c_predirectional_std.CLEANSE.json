@@ -1,0 +1,45 @@
+{
+  "objectInfo" : {
+    "id" : "6XnATGXfQmskD1DWuRgMyF",
+    "name" : "c_predirectional_std",
+    "type" : "CLEANSE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6XnATGXfQmskD1DWuRgMyF"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Replaces address prefix values like 'apartment', 'building', etc. with their 3 letter abbreviations.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2024-10-02T19:44:26.736Z",
+  "objectRefs" : [ {
+    "id" : "ev7cAJA1kciej2RsYpzVS0",
+    "name" : "usa_adrs_prfx_std_s_infa",
+    "type" : "DICTIONARY",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ev7cAJA1kciej2RsYpzVS0"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "This reference table contains prefix for address name std in US.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Data Quality Bundle"
+  } ]
+}

@@ -1,0 +1,45 @@
+{
+  "objectInfo" : {
+    "id" : "8hQDFCxL5eEd9mZjFazker",
+    "name" : "c_Titlecase",
+    "type" : "CLEANSE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8hQDFCxL5eEd9mZjFazker"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Converts input text to Title Case format.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2024-10-02T19:44:26.734Z",
+  "objectRefs" : [ {
+    "id" : "6BB0C1z8qKZhQpxB61JaAz",
+    "name" : "title_case_excptn_infa",
+    "type" : "DICTIONARY",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6BB0C1z8qKZhQpxB61JaAz"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "The reference table contains list of words that are title case exceptions - capitalized major words and minor words are lowercase",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Data Quality Bundle"
+  } ]
+}

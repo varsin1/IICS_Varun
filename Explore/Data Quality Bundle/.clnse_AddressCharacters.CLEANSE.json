@@ -1,0 +1,25 @@
+{
+  "objectInfo" : {
+    "id" : "5133ipJIgzhjYMpIApZqwf",
+    "name" : "clnse_AddressCharacters",
+    "type" : "CLEANSE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5133ipJIgzhjYMpIApZqwf"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2024-10-02T19:44:26.732Z",
+  "objectRefs" : [ ]
+}

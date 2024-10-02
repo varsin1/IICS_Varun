@@ -1,0 +1,25 @@
+{
+  "objectInfo" : {
+    "id" : "3VvPTDJLnSweZxeGkhRheN",
+    "name" : "usa_adrs_sufx_std_s_infa",
+    "type" : "DICTIONARY",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3VvPTDJLnSweZxeGkhRheN"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "This dictionary contains the address suffix short standard for USA.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2024-10-02T19:44:26.735Z",
+  "objectRefs" : [ ]
+}

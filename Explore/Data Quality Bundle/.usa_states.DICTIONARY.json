@@ -1,0 +1,25 @@
+{
+  "objectInfo" : {
+    "id" : "5j51rz8Bka1ihxDGXVtHM0",
+    "name" : "usa_states",
+    "type" : "DICTIONARY",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5j51rz8Bka1ihxDGXVtHM0"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "This reference table contains list of states in US.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2024-10-02T19:44:26.733Z",
+  "objectRefs" : [ ]
+}
