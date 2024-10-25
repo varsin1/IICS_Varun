@@ -1,0 +1,77 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>v7XFEpciZBpDUQb-gt-6979809-2024-10-25T17:05:18.345Z::pd.xml</types1:EntryId>
+      <types1:Name>TestXMLNamespaces-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-10-25T17:05:18Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>vasingh@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2024-10-25T17:05:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.TestXMLNamespaces-1/TestXMLNamespaces-1.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="7ccmalrtu3QgdsZXzvSQij"
+                  displayName="TestXMLNamespaces"
+                  name="TestXMLNamespaces-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="XML" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="XMLOutput" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+                  <wholePayload inputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="m2dopkip" targetId="m2dopkio"/>
+               </start>
+               <assignment id="m2dopkio">
+                  <title>Assignment to XMLOutput</title>
+                  <operation source="formula" to="output.XMLOutput">
+                     <expression language="XQuery">util:simplifyXml($input.XML)</expression>
+                  </operation>
+                  <link id="m2dopkiq" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>7ccmalrtu3QgdsZXzvSQij</types1:GUID>
+      <types1:DisplayName>TestXMLNamespaces</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2024-10-25T17:05:53.613Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

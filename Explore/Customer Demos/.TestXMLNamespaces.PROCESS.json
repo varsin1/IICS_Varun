@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "7ccmalrtu3QgdsZXzvSQij",
+    "name" : "TestXMLNamespaces",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "v7XFEpciZBpDUQb-gt-6979809-2024-10-25T17:05:18.345Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : null,
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2024-10-25T17:05:53.860Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
