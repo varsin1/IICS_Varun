@@ -1,0 +1,78 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Ngbcggaaaaa-gt-41281331-2023-05-03T17:14:20.641Z::svc.xml</types1:EntryId>
+      <types1:Name>JSONParser</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-05-03T17:14:21Z</types1:CreationDate>
+      <types1:ModifiedBy>vasingh@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-27T22:54:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>vasingh@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-03T17:15:35Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/JSONParser/JSONParser_svcDef.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="JSONParser"
+                            label=""
+                            name="JSONParser"
+                            uuid="6b4daff7-1252-4a89-b8c2-3e232eb639cc">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="JSONParserUsingXQuery"
+                       maxRedirects="100"
+                       name="JSONParserUsingXQuery"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://www.google.com"
+                                        verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword>false</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="true">
+                           <keyStore mode="file">C://</keyStore>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="ParseJSON" type="string">
+                        <xquery>{let $json:='{
+  "283119104299": {   "warrantyResults": "Success"},
+  "283119104300": {   "warrantyResults": "Failure"},
+  "283119104301": {   "warrantyResults": "Success"},
+  "283119104302": {   "warrantyResults": "Warning"}
+}'
+return map:keys(parse-json(data($json)))}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>8uEQdJkxduaeGgPKLFCgIw</types1:GUID>
+      <types1:DisplayName>JSONParser</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-07T22:00:21.808Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

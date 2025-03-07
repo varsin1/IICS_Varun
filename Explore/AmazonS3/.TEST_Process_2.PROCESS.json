@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "f4Xq4X9hM2Nhc5tsUFDuSI",
+    "name" : "TEST_Process_2",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "VdoYsjqluQgabcj-gt-723376-2023-07-09T20:19:01.676Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-07T22:01:13.329Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

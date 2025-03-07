@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "744LoKu3atlfSem2qIpUsU",
+    "name" : "KeyValueCodeType",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "9SfSmbduaa-gt-28516428-2023-11-08T23:11:36.968Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This object was generated from [KeyValueCodeType complex type] located in the [DCSFeedCommon-1.0.xsd] source XML schema.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-07T22:01:13.327Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

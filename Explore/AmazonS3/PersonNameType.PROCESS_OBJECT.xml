@@ -1,0 +1,62 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oJ9ARJi4tciSrZM-gt-117794089-2023-11-08T23:11:36.236Z::po.xml</types1:EntryId>
+      <types1:Name>PersonNameType</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-11-08T23:11:36Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        xmlns:aetgt="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:internal2="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                        isByCopy="true"
+                        name="PersonNameType">
+            <description>This object was generated from [PersonNameType complex type] located in the [DCSFeedCommon-1.0.xsd] source XML schema.</description>
+            <detail>
+               <field label="fullName" name="fullName" nullable="false" type="string">
+                  <options>
+                     <option name="length">128</option>
+                  </options>
+               </field>
+               <field label="namePrefix"
+                      name="namePrefix"
+                      nullable="false"
+                      type="string">
+                  <options>
+                     <option name="length">16</option>
+                  </options>
+               </field>
+               <field label="givenName"
+                      name="givenName"
+                      nullable="false"
+                      type="string">
+                  <options>
+                     <option name="length">64</option>
+                  </options>
+               </field>
+               <field label="familyName"
+                      name="familyName"
+                      nullable="false"
+                      type="string">
+                  <options>
+                     <option name="length">64</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>3aPlbiZ55e4kaqBng3ILyW</types1:GUID>
+      <types1:DisplayName>PersonNameType</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-07T22:00:21.898Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

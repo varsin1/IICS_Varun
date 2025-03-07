@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "2aCztU5MI8ddOswT3nJcCb",
+    "name" : "FlightStatisticsType",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "lJjx9AWbg0ZkL0j-gt-28516354-2023-11-08T23:11:36.189Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This object was generated from [FlightStatisticsType complex type] located in the [DCSFeedCommon-1.0.xsd] source XML schema.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-07T22:01:13.327Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

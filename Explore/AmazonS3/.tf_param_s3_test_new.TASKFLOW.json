@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "bZ2RELSs1mRiGQJECHdjkF",
+    "name" : "tf_param_s3_test_new",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "rNmumf6S3wOLIFv-gt-56276983-2023-06-22T23:34:49.276Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-07T22:01:13.326Z",
+  "objectRefs" : [ {
+    "id" : "fzZRP0ZQRWhdA928dS4sQN",
+    "name" : "VS_S3_FL",
+    "type" : "MI_FILE_LISTENER",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "41301"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Salesforce"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,52 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>x6Ru5V1FyuRZXDy-gt-117794207-2023-11-08T23:11:37.373Z::po.xml</types1:EntryId>
+      <types1:Name>FlightClassWiseStatisticsType</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-11-08T23:11:37Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        xmlns:aetgt="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:internal2="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        isByCopy="true"
+                        name="FlightClassWiseStatisticsType">
+            <description xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd">This object was generated from [FlightClassWiseStatisticsType complex type] located in the [DCSFeedCommon-1.0.xsd] source XML schema.</description>
+            <detail>
+               <field label="classWiseConfiguration"
+                      name="classWiseConfiguration"
+                      nullable="false"
+                      type="objectlist">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:ClasswiseStatisticsType</option>
+                     <option name="guid">2fl1TwPzdsahOEouWTr1AF</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="code"
+                      name="code"
+                      nullable="false"
+                      type="string">
+                  <options>
+                     <option name="length">255</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>8k4GlgRPUZye8leOfSepSe</types1:GUID>
+      <types1:DisplayName>FlightClassWiseStatisticsType</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-07T22:01:10.241Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
