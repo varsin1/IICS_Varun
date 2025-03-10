@@ -1,0 +1,371 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>covp53nQciSrZMS-gt-13081436-2024-10-10T17:16:45.048Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcCon-IICS-Users</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Generic service connector to get user details for users within the IICS environment.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-10-10T17:16:45Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcCon-IICS-Users"
+                            label=""
+                            name="SvcCon-IICS-Users"
+                            uuid="10f1958e-ba87-45e4-a138-7473b9c31685">
+            <description>Generic service connector to get user details for users within the IICS environment.</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description="Base URL of the Informatica Cloud REST APIs."
+                                    label="baseUrl"
+                                    masked="false"
+                                    name="baseUrl"
+                                    required="true"
+                                    testWith="https://apse1.dm-ap.informaticacloud.com/saas"
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category="IICS - User"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get User Email"
+                       maxRedirects="100"
+                       name="Get User Email"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Takes an input User Name and returns the Users email address.</description>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="sessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="6BObvqSRwSQdUoTJM2g1GG"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="userName"
+                                nogen="true"
+                                required="true"
+                                testWith="mark.ogilvie@fultonhogan.com.SAML4"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://apse1.dm-ap.informaticacloud.com/saas/public/core/v3/users?q=userName=={$userName}"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="INFA-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="userName"
+                            property="userName"
+                            type="string"/>
+                     <field description="" name="userEmail" property="email" type="string"/>
+                     <field description="" name="userState" property="state" type="string"/>
+                  </output>
+               </action>
+               <action category="IICS - Group"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get User Group Details"
+                       maxRedirects="100"
+                       name="Get User Group Details"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Takes an input User Group Name and returns the details of that User Group including the Users within that User Group.</description>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="sessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="akosiwhPHk1kshDkCkIx2N&#xA;"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="userGroupName"
+                                nogen="true"
+                                required="true"
+                                testWith="Location MDM - NZ techs"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://apse1.dm-ap.informaticacloud.com/saas/public/core/v3/userGroups?q=userGroupName=={fn:encode-for-uri( fn:concat('&#34;',$userGroupName,'&#34;'))}"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="INFA-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="userGroup" type="objectlist">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">userGroup</option>
+                           <option name="guid">userGroup</option>
+                        </options>
+                        <xquery>{let $x := for $i in /*/*
+return 
+ &lt;userGroup&gt;
+    &lt;updatedBy&gt;{data($i/updatedBy)}&lt;/updatedBy&gt;
+    &lt;createdBy&gt;{data($i/createdBy)}&lt;/createdBy&gt;
+    &lt;createTime&gt;{data($i/createTime)}&lt;/createTime&gt;
+    { 
+      for $j in $i/roles
+      return &lt;roles&gt;
+          &lt;displayDescription&gt;{data($j/displayDescription)}&lt;/displayDescription&gt;
+          &lt;displayName&gt;{data($j/displayName)}&lt;/displayName&gt;
+          &lt;roleName&gt;{data($j/roleName)}&lt;/roleName&gt;
+          &lt;description&gt;{data($j/description)}&lt;/description&gt;
+          &lt;id&gt;{data($j/id)}&lt;/id&gt;
+      &lt;/roles&gt;
+    }
+    &lt;userGroupName&gt;{data($i/userGroupName)}&lt;/userGroupName&gt;
+    &lt;description&gt;{data($i/description)}&lt;/description&gt;
+    &lt;updateTime&gt;{data($i/updateTime)}&lt;/updateTime&gt;
+    &lt;id&gt;{data($i/id)}&lt;/id&gt;
+    &lt;orgId&gt;{data($i/orgId)}&lt;/orgId&gt;
+     { 
+        for $k in $i/users
+        return &lt;users&gt;
+          &lt;description&gt;{data($k/description)}&lt;/description&gt;
+          &lt;id&gt;{data($k/id)}&lt;/id&gt;
+          &lt;userName&gt;{data($k/userName)}&lt;/userName&gt;
+      &lt;/users&gt; 
+    }
+&lt;/userGroup&gt; 
+ 
+return $x}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category="IICS - User"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get User Email By ID"
+                       maxRedirects="100"
+                       name="Get User Email By ID"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Takes an input User ID and returns the Users Email Address.</description>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="sessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="5Kf8qrBEp18ihUSZkBeQ0a"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="userId"
+                                nogen="true"
+                                required="true"
+                                testWith="7uORM6aoASWkkhuVceh3Q9"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://apse1.dm-ap.informaticacloud.com/saas/public/core/v3/users?q=userId=={$userId}"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="INFA-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="userId" property="id" type="string"/>
+                     <field description="" name="userEmail" property="email" type="string"/>
+                     <field description="" name="userState" property="state" type="string"/>
+                  </output>
+               </action>
+               <action category="IICS - Group"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get All Groups"
+                       maxRedirects="100"
+                       name="Get All Groups"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Return a list of all groups</description>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="sessionId"
+                                required="true"
+                                testWith="7EAh2vdJ2PKd9gdxrTFwEK"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://apse1.dm-ap.informaticacloud.com/saas/public/core/v3/userGroups"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="INFA-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="userGroups" type="objectlist">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">userGroup</option>
+                           <option name="guid">userGroup</option>
+                        </options>
+                        <xquery>{let $x := for $i in /*/*
+return 
+ &lt;userGroup&gt;
+    &lt;updatedBy&gt;{data($i/updatedBy)}&lt;/updatedBy&gt;
+    &lt;createdBy&gt;{data($i/createdBy)}&lt;/createdBy&gt;
+    &lt;createTime&gt;{data($i/createTime)}&lt;/createTime&gt;
+    { 
+      for $j in $i/roles
+      return &lt;roles&gt;
+          &lt;displayDescription&gt;{data($j/displayDescription)}&lt;/displayDescription&gt;
+          &lt;displayName&gt;{data($j/displayName)}&lt;/displayName&gt;
+          &lt;roleName&gt;{data($j/roleName)}&lt;/roleName&gt;
+          &lt;description&gt;{data($j/description)}&lt;/description&gt;
+          &lt;id&gt;{data($j/id)}&lt;/id&gt;
+      &lt;/roles&gt;
+    }
+    &lt;userGroupName&gt;{data($i/userGroupName)}&lt;/userGroupName&gt;
+    &lt;description&gt;{data($i/description)}&lt;/description&gt;
+    &lt;updateTime&gt;{data($i/updateTime)}&lt;/updateTime&gt;
+    &lt;id&gt;{data($i/id)}&lt;/id&gt;
+    &lt;orgId&gt;{data($i/orgId)}&lt;/orgId&gt;
+     { 
+        for $k in $i/users
+        return &lt;users&gt;
+          &lt;description&gt;{data($k/description)}&lt;/description&gt;
+          &lt;id&gt;{data($k/id)}&lt;/id&gt;
+          &lt;userName&gt;{data($k/userName)}&lt;/userName&gt;
+      &lt;/users&gt; 
+    }
+&lt;/userGroup&gt; 
+ 
+return $x}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="userGroup">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="updatedBy" nullable="true" required="false" type="string"/>
+                     <field name="createdBy" nullable="true" required="false" type="string"/>
+                     <field name="createTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="roles" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">roles</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="userGroupName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="description"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="updateTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="orgId" nullable="true" required="false" type="string"/>
+                     <field name="users" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">users</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="roles">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="displayDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="displayName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="roleName" nullable="true" required="false" type="string"/>
+                     <field name="description"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="users">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="description"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="userName" nullable="true" required="false" type="string"/>
+                     <field name="userEmail" nullable="true" required="false" type="string">
+                        <options/>
+                     </field>
+                     <field name="userState" nullable="true" required="false" type="string">
+                        <options/>
+                     </field>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>3yBKWIffu2Od5xQsOgWzUs</types1:GUID>
+      <types1:DisplayName>SvcCon-IICS-Users</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:06.689Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

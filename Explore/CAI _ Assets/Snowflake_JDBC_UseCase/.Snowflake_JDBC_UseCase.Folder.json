@@ -1,8 +1,8 @@
 {
   "objectInfo" : {
-    "id" : "6kNn3aeOrycbMMq1i1tBud",
-    "name" : "CAI _ Assets",
-    "type" : "Project",
+    "id" : "04IAs7wgRitk0VcrkWWrEI",
+    "name" : "Snowflake_JDBC_UseCase",
+    "type" : "Folder",
     "metadata" : {
       "modelVersion" : {
         "major" : 0,
@@ -18,7 +18,7 @@
     }
   },
   "dataFileExtension" : "json",
-  "updateTime" : "2025-03-10T17:38:07.505Z",
+  "updateTime" : "2025-03-10T17:38:07.503Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false

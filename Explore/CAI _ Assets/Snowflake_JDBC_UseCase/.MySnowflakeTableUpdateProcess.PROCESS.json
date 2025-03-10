@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "amBTci0eIj2gMkzcdBYEiL",
+    "name" : "MySnowflakeTableUpdateProcess",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3bclLnzYLnzYLnz-gt-2865539-2024-11-08T17:09:39.871Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-10T17:38:07.506Z",
+  "objectRefs" : [ {
+    "id" : "i5Orv9t4wc3lKD6YMfjIQU",
+    "name" : "MySnowFlakeConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "NP3PYhJmojDXJqE-gt-2759936-2024-11-08T17:09:39.629Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CAI _ Assets/Snowflake_JDBC_UseCase"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

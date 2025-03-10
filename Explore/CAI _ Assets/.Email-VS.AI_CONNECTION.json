@@ -1,15 +1,15 @@
 {
   "objectInfo" : {
-    "id" : "jNYeMeu9PSZia1rOULFKIf",
-    "name" : "ICAI-41027",
-    "type" : "PROCESS",
+    "id" : "2gSCOaM7SXrjvSdeuZJkoP",
+    "name" : "Email-VS",
+    "type" : "AI_CONNECTION",
     "metadata" : {
       "modelVersion" : {
         "major" : 1,
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "L9UQAHzSZkL0jmu-gt-14134267-2023-10-12T19:17:47.608Z::pd.xml"
+        "repoHandle" : "bdpsaaaa-gt-22862282-2023-11-07T22:45:17.022Z::conn.xml"
       },
       "contextAttributes" : null,
       "additionalInfo" : {
@@ -20,7 +20,7 @@
     }
   },
   "dataFileExtension" : "xml",
-  "updateTime" : "2025-03-10T17:38:07.501Z",
+  "updateTime" : "2025-03-10T17:38:07.504Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false

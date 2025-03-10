@@ -1,8 +1,8 @@
 {
   "objectInfo" : {
-    "id" : "6kNn3aeOrycbMMq1i1tBud",
-    "name" : "CAI _ Assets",
-    "type" : "Project",
+    "id" : "6bb7x4RYCcne0aKRWyyLAZ",
+    "name" : "sribatsa",
+    "type" : "Folder",
     "metadata" : {
       "modelVersion" : {
         "major" : 0,
@@ -18,7 +18,7 @@
     }
   },
   "dataFileExtension" : "json",
-  "updateTime" : "2025-03-10T17:38:07.505Z",
+  "updateTime" : "2025-03-10T17:38:07.506Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false

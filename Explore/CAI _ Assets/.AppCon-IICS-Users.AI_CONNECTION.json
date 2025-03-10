@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "i2Z4bxTPgkOewivlQWfBYq",
+    "name" : "AppCon-IICS-Users",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "qxluzBq695kchzt-gt-13190539-2024-10-10T17:16:46.27Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "App connection for the SvcCon-IICS-Users service connector.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-10T17:38:07.504Z",
+  "objectRefs" : [ {
+    "id" : "3yBKWIffu2Od5xQsOgWzUs",
+    "name" : "SvcCon-IICS-Users",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "covp53nQciSrZMS-gt-13081436-2024-10-10T17:16:45.048Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Generic service connector to get user details for users within the IICS environment.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CAI _ Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

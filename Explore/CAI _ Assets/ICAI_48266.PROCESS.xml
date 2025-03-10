@@ -1,0 +1,89 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>gpbdoPVm5Y6tMFy-gt-9044555-2024-11-19T00:00:11.116Z::pd.xml</types1:EntryId>
+      <types1:Name>ICAI_48266</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:_1__A_USW1PF1PXZQB</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-11-19T00:00:11Z</types1:CreationDate>
+      <types1:ModifiedBy>vasingh@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2024-11-19T00:02:23Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>vasingh@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2024-11-19T00:02:27Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ICAI_48266/ICAI_48266.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="4JRo839qk32gelN49GC6Aa"
+                  displayName="ICAI_48266"
+                  name="ICAI_48266"
+                  overrideAPIName="false"
+                  processNamespace="urn:screenflow:process:">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:_1__A_USW1PF1PXZQB</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="Hello" name="Test" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="normal">
+               <targetLocation>_1__A_USW1PF1PXZQB</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="x4199e44e-3810-479d-8c8b-f27c09f08f97">
+               <start id="b5eae5e17-a7be-41f7-85ca-d458b80c3028">
+                  <link id="r4121009b-4e6e-4b9a-831e-fe49bf19d5b2"
+                        targetId="Assignment0f9e118c-aee4-4a66-b9ee-773739e69d92"/>
+               </start>
+               <assignment id="Assignment0f9e118c-aee4-4a66-b9ee-773739e69d92">
+                  <title>Assignment to Test</title>
+                  <operation source="constant" to="input.Test">Hello</operation>
+                  <link id="v0ac16a37-ef77-490b-865f-33701a832597"
+                        targetId="end-oe1234d4c-a56b-4180-9c46-31306ce8be23"/>
+               </assignment>
+               <end id="end-oe1234d4c-a56b-4180-9c46-31306ce8be23">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>4e2a6643-98a7-4d07-aadf-3f111dea78a3</ns1:Id>
+               <ns1:Name>Hello</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-11-19T00:02:01Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-11-19T00:02:03Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "Test": ""
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>4JRo839qk32gelN49GC6Aa</types1:GUID>
+      <types1:DisplayName>ICAI_48266</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:06.93Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

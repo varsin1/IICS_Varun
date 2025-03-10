@@ -1,19 +1,19 @@
 {
   "objectInfo" : {
-    "id" : "jNYeMeu9PSZia1rOULFKIf",
-    "name" : "ICAI-41027",
-    "type" : "PROCESS",
+    "id" : "1kt9pLDvpMyimkeve3qya4",
+    "name" : "AppCon-IICS-Email",
+    "type" : "AI_CONNECTION",
     "metadata" : {
       "modelVersion" : {
         "major" : 1,
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "L9UQAHzSZkL0jmu-gt-14134267-2023-10-12T19:17:47.608Z::pd.xml"
+        "repoHandle" : "GJZx1XmgaabclvA-gt-13081477-2024-10-10T17:16:45.525Z::conn.xml"
       },
       "contextAttributes" : null,
       "additionalInfo" : {
-        "description" : "",
+        "description" : "Email app connection to send notification emails from InformaticaDev@FultonHogan.com",
         "contentType" : "application/json; charset=utf-8",
         "documentState" : "VALID"
       }

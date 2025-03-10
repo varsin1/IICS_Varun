@@ -1,0 +1,113 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>BlTgaaaa-gt-6115847-2023-03-12T20:18:11.438Z::pd.xml</types1:EntryId>
+      <types1:Name>pInsertUpdate</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:sribatsa-redhat.informatica.com,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-03-12T20:18:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="pInsertUpdate"
+                  name="pInsertUpdate"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:sribatsa-redhat.informatica.com,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tempNames" type="reference">
+                  <options>
+                     <option name="referenceTo">oracleJDBC:NAMES</option>
+                     <option name="required">false</option>
+                     <option name="guid">i7eLx0WYbA1ediPaLMPRmG</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>sribatsa-redhat.informatica.com</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l5121sxn" targetId="l5121sxm"/>
+               </start>
+               <assignment id="l5121sxm">
+                  <title>Assignment to tempNames</title>
+                  <operation source="query" to="temp.tempNames">
+                     <query advanceQuery="false" from="oracleJDBC:NAMES">
+                        <where>NAME = 'SRIBATSA'</where>
+                     </query>
+                  </operation>
+                  <link id="l5121sy0" targetId="l5121sxz"/>
+               </assignment>
+               <container id="l5121sxz" type="exclusive">
+                  <title>tempNames</title>
+                  <flow id="l5121sy3">
+                     <assignment id="l5121syf">
+                        <title>Assignment to NAME</title>
+                        <operation source="constant" to="temp.tempNames.NAME">SRIBATSA UPDATED</operation>
+                     </assignment>
+                     <link id="l5121sy4" targetId="l5121sxz" type="containerLink"/>
+                  </flow>
+                  <flow id="l5121sy6">
+                     <create id="l5knqn1u">
+                        <title>NAMES</title>
+                        <entityName>oracleJDBC:NAMES</entityName>
+                        <createInput>
+                           <parameter name="ID" source="constant" updatable="true">123</parameter>
+                           <parameter name="NAME" source="constant" updatable="true"/>
+                        </createInput>
+                     </create>
+                     <link id="l5121sy7" targetId="l5121sxz" type="containerLink"/>
+                  </flow>
+                  <link id="l5121sy2" targetId="l5121sy3" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tempNames}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l5121sy5" targetId="l5121sy6" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tempNames}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l5121sy1" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>f75563b3-86d1-40f9-a20c-e8c9acde80bf</ns1:Id>
+               <ns1:Name>TEST</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-12T20:18:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-12T20:18:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>32h0TMTsZh8h6KKHItNWa3</types1:GUID>
+      <types1:DisplayName>pInsertUpdate</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:07.233Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

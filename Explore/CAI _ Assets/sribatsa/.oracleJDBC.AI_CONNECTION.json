@@ -1,15 +1,15 @@
 {
   "objectInfo" : {
-    "id" : "jNYeMeu9PSZia1rOULFKIf",
-    "name" : "ICAI-41027",
-    "type" : "PROCESS",
+    "id" : "i7eLx0WYbA1ediPaLMPRmG",
+    "name" : "oracleJDBC",
+    "type" : "AI_CONNECTION",
     "metadata" : {
       "modelVersion" : {
         "major" : 1,
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "L9UQAHzSZkL0jmu-gt-14134267-2023-10-12T19:17:47.608Z::pd.xml"
+        "repoHandle" : "jBeE1KoJBUhtyco-gt-12123494-2023-03-12T20:18:11.156Z::conn.xml"
       },
       "contextAttributes" : null,
       "additionalInfo" : {

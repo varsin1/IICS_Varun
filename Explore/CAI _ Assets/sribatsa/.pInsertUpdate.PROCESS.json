@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "32h0TMTsZh8h6KKHItNWa3",
+    "name" : "pInsertUpdate",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "BlTgaaaa-gt-6115847-2023-03-12T20:18:11.438Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-10T17:38:07.505Z",
+  "objectRefs" : [ {
+    "id" : "i7eLx0WYbA1ediPaLMPRmG",
+    "name" : "oracleJDBC",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "jBeE1KoJBUhtyco-gt-12123494-2023-03-12T20:18:11.156Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CAI _ Assets/sribatsa"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

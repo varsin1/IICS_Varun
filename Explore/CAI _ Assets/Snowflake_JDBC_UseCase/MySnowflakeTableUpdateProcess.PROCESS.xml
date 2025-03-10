@@ -1,0 +1,88 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>3bclLnzYLnzYLnz-gt-2865539-2024-11-08T17:09:39.871Z::pd.xml</types1:EntryId>
+      <types1:Name>MySnowflakeTableUpdateProcess</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-11-08T17:09:40Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="amBTci0eIj2gMkzcdBYEiL"
+                  displayName="MySnowflakeTableUpdateProcess"
+                  name="MySnowflakeTableUpdateProcess"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="MySnowflakeDataList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">MySnowFlakeConnection:GCS_CUSTOMERS</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">i5Orv9t4wc3lKD6YMfjIQU</option>
+                  </options>
+               </field>
+               <field description="" name="TempFirstName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="TempLastName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kiysc1xh" targetId="kiysc1xg"/>
+               </start>
+               <assignment id="kiysc1xg">
+                  <title>Get Temp Values</title>
+                  <operation source="constant" to="temp.TempFirstName">Jonathan</operation>
+                  <operation source="constant" to="temp.TempLastName">David</operation>
+                  <link id="kj4g6hb4" targetId="kj4g6hb3"/>
+               </assignment>
+               <assignment id="kj4g6hb3">
+                  <title>Assignment to MySnowflakeDataList</title>
+                  <operation source="list" to="temp.MySnowflakeDataList">
+                     <query advanceQuery="true" from="MySnowFlakeConnection:GCS_CUSTOMERS">
+                        <where>ID = 2</where>
+                     </query>
+                  </operation>
+                  <link id="kj4g6hb5" targetId="kj4g6hai"/>
+               </assignment>
+               <assignment id="kj4g6hai">
+                  <title>Assignment to ID, FIRSTNAME etc.</title>
+                  <operation source="constant" to="temp.MySnowflakeDataList.ID">2</operation>
+                  <operation source="field" to="temp.MySnowflakeDataList.FIRSTNAME">temp.TempFirstName</operation>
+                  <operation source="field" to="temp.MySnowflakeDataList.LASTNAME">temp.TempLastName</operation>
+                  <link id="kj4g6hak" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>amBTci0eIj2gMkzcdBYEiL</types1:GUID>
+      <types1:DisplayName>MySnowflakeTableUpdateProcess</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:07.332Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

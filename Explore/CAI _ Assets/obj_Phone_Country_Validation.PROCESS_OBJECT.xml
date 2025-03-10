@@ -1,0 +1,61 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>MBu8zbgdwUiQLnz-gt-171765686-2024-06-06T22:19:27.628Z::po.xml</types1:EntryId>
+      <types1:Name>obj_Phone_Country_Validation</types1:Name>
+      <types1:ParentFlowIds>5T3jFIMeINciZBp-gt-22552027-2024-06-06T22:19:27.915Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-06-06T22:19:28Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="obj_Phone_Country_Validation"
+                        isByCopy="true"
+                        name="obj_Phone_Country_Validation">
+            <description/>
+            <tags/>
+            <detail>
+               <field label="Country"
+                      name="Country"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Phone"
+                      name="Phone"
+                      nullable="true"
+                      required="true"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="IsValid"
+                      name="IsValid"
+                      nullable="true"
+                      required="false"
+                      type="boolean">
+                  <options/>
+               </field>
+               <field label="Status"
+                      name="Status"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>1p90gfPD4s5drnvXwPa50k</types1:GUID>
+      <types1:DisplayName>obj_Phone_Country_Validation</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:06.866Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "aHVIfyBqL4Sd71YsV7rOeL",
+    "name" : "Phone Country Calling Code Async Process",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5T3jFIMeINciZBp-gt-22552027-2024-06-06T22:19:27.915Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-10T17:38:07.504Z",
+  "objectRefs" : [ {
+    "id" : "1p90gfPD4s5drnvXwPa50k",
+    "name" : "obj_Phone_Country_Validation",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "MBu8zbgdwUiQLnz-gt-171765686-2024-06-06T22:19:27.628Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CAI _ Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

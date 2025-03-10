@@ -1,0 +1,51 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>qxluzBq695kchzt-gt-13190539-2024-10-10T17:16:46.27Z::conn.xml</types1:EntryId>
+      <types1:Name>AppCon-IICS-Users</types1:Name>
+      <types1:ParentFlowIds>L2BX9cjIw8jIw8j-gt-13190569-2024-10-10T17:16:46.607Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>App connection for the SvcCon-IICS-Users service connector.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-10-10T17:16:46Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AppCon-IICS-Users"
+                     label="AppCon-IICS-Users"
+                     name="AppCon-IICS-Users">
+            <description>App connection for the SvcCon-IICS-Users service connector.</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="username" value="SVC_INFA_Processing"/>
+               <attribute encrypted="true" name="password" value=""/>
+               <attribute encrypted="false"
+                          name="baseUrlAuth"
+                          value="https://dm-ap.informaticacloud.com/identity-service/api/v1/Login"/>
+               <attribute encrypted="false"
+                          name="baseUrl"
+                          value="https://apse1.dm-ap.informaticacloud.com/saas"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/SvcCon_IICS_Users/SvcCon_IICS_Users_svcDef.xml"
+                               guid="3yBKWIffu2Od5xQsOgWzUs"
+                               name="SvcCon-IICS-Users"
+                               supportsConnectionTest="false"
+                               uuid="10f1958e-ba87-45e4-a138-7473b9c31685">
+               <description>Generic service connector to get user details for users within the IICS environment.</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>i2Z4bxTPgkOewivlQWfBYq</types1:GUID>
+      <types1:DisplayName>AppCon-IICS-Users</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:07.026Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

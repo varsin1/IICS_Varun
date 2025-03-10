@@ -1,0 +1,774 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>qCaaa-gt-13081460-2024-10-10T17:16:45.273Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcCon-IICS-Authentication</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Service Connection to the Informatica Data Management Cloud for login and authentication.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-10-10T17:16:45Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcCon-IICS-Authentication"
+                            label=""
+                            name="SvcCon-IICS-Authentication"
+                            uuid="a77ab5d1-dd1f-40e4-a695-c871ca8f1375">
+            <description>Service Connection to the Informatica Data Management Cloud for login and authentication.</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description="Username to authenticate the session in Informatica IICS."
+                                    label="loginUser"
+                                    masked="false"
+                                    name="loginUser"
+                                    required="true"
+                                    testWith="SVC_INFA_Processing_UAT"
+                                    type="string"/>
+               <connectionAttribute description="Password to authenticate the session in Informatica IICS."
+                                    label="loginPassword"
+                                    masked="true"
+                                    name="loginPassword"
+                                    required="true"
+                                    testWith=""
+                                    type="string"/>
+               <connectionAttribute description="Base URL of the Informatica Cloud Identity Service."
+                                    label="baseUrlAuth"
+                                    masked="false"
+                                    name="baseUrlAuth"
+                                    required="true"
+                                    testWith="https://dm-ap.informaticacloud.com/identity-service/api/v1"
+                                    type="string"/>
+               <connectionAttribute description="Base URL of the Informatica Cloud REST API V2 service."
+                                    label="baseUrlV2"
+                                    masked="false"
+                                    name="baseUrlV2"
+                                    required="true"
+                                    testWith="https://apse1.dm-ap.informaticacloud.com/saas/api/v2"
+                                    type="string"/>
+               <connectionAttribute description="Base URL of the Informatica Cloud REST API V3 service."
+                                    label="baseUrlV3"
+                                    masked="false"
+                                    name="baseUrlV3"
+                                    required="true"
+                                    testWith="https://dm-ap.informaticacloud.com/saas/public/core/v3"
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category="Authentication"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Login"
+                       maxRedirects="100"
+                       name="Login"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$baseUrlAuth}/Login"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+	"username": "{$loginUser}",
+    "password": "{replace(replace($loginPassword,'\\','\\\\'),'"','\\"')}"
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="out_SessionId"
+                            property="sessionId"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Authentication"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Generate Token"
+                       maxRedirects="100"
+                       name="Generate Token"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="client_id"
+                                required="true"
+                                testWith="cdlg_mgmt_app"
+                                type="string"/>
+                     <parameter name="nonce"
+                                required="true"
+                                testWith="ewrfqwefwaeftr"
+                                type="string"/>
+                     <parameter name="sessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="6NWlmFqlUy9ejAElgkn0sD"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$baseUrlAuth}/jwt/Token"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="IDS-Session-ID">{$sessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="Bearer_Token"
+                            property="jwt_token"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Authentication"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Validate Token"
+                       maxRedirects="100"
+                       name="Validate Token"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="sessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="6WhxG6CD6WXhtcIVQ403cb"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$baseUrlV2}/user/validSessionId"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+"@type": "validatedToken",
+"userName": "{$loginUser}",
+"icToken": "{$sessionId}"
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="timeUntilExpire"
+                            property="timeUntilExpire"
+                            type="string"/>
+                     <field description=""
+                            name="isValidToken"
+                            property="isValidToken"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Authentication"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Logout"
+                       maxRedirects="100"
+                       name="Logout"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Takes a sessionId input and logs the session out of the Informatica Data Management Platform.</description>
+                  <input>
+                     <parameter name="sessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="6WhxG6CD6WXhtcIVQ403cb"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$baseUrlV3}/logout"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="INFA-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="sub_profileColumns">
+                  <description>Process object containing column details from a profile.</description>
+                  <detail>
+                     <field name="fieldName" nullable="true" required="false" type="string"/>
+                     <field name="isDeleted" nullable="true" required="false" type="string"/>
+                     <field name="appliedBy" nullable="true" required="false" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="sourceName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="columnKey" nullable="true" required="false" type="string"/>
+                     <field name="fieldType" nullable="true" required="false" type="string"/>
+                     <field name="frsId" nullable="true" required="false" type="string"/>
+                     <field name="scoreCardId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleType" nullable="true" required="false" type="string"/>
+                     <field name="inputFieldMappings"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">cols_inputFieldMappings</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="outputFieldMappings"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">cols_outputFieldMappings</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="assignmentIdentifier"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileId" nullable="true" required="false" type="string"/>
+                     <field name="ruleCriticality"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleOccurrenceDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleDimension"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleOccurrenceId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleName" nullable="true" required="false" type="string"/>
+                     <field name="ruleThreshold"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTarget"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleReference"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleOwner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleCreatedBy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleCreatedTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleLastUpdatedBy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleLastUpdatedTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleDimension"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="sub_profiles">
+                  <description>Process object for sub-processes executing API queries against Data Profiles.</description>
+                  <detail>
+                     <field name="profileId" nullable="true" required="false" type="string"/>
+                     <field name="bearerToken"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="sessionId" nullable="true" required="false" type="string"/>
+                     <field name="profileName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileRunId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileJobId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileJobStatus"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileFirstRuleColumnId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileQueryId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileQueryJobId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileQueryJobStatus"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileQueryOutputConnectionId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileQueryOutputFileName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileRunKey"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="sub_profileRuleColumns"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">sub_profileColumns</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="profileRunStartTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileRunEndTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileRunStatus"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileQueryStartTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileQueryEndTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="sub_ruleOccurences">
+                  <description>Process object for sub-processes executing API queries against Rule Occurrences in CDGC.</description>
+                  <detail>
+                     <field name="ruleOccurrenceId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="bearerToken"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="profileId" nullable="true" required="false" type="string"/>
+                     <field name="sessionId" nullable="true" required="false" type="string"/>
+                     <field name="ruleOccurrenceName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleOccurrenceDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleThreshold"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleDimension"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleCriticality"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleScoreCardId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleReference"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTarget"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleOwner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleCreatedBy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleCreatedTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleLastUpdatedBy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleLastUpdatedTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ruleTechnicalRuleDimension"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="sub_profileRule">
+                  <description>Process object for sub-processes executing API queries against rule columns in Data Profiles.</description>
+                  <detail>
+                     <field name="profileId" nullable="true" required="false" type="string"/>
+                     <field name="sessionId" nullable="true" required="false" type="string"/>
+                     <field name="ruleId" nullable="true" required="false" type="string"/>
+                     <field name="ruleName" nullable="true" required="false" type="string"/>
+                     <field name="ruleType" nullable="true" required="false" type="string"/>
+                     <field name="ruleDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="inFieldId" nullable="true" required="false" type="string"/>
+                     <field name="inFieldName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="outFieldId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="outFieldName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="bearerToken"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="sub_profileJob">
+                  <description>Object containing details of Profile Jobs</description>
+                  <detail>
+                     <field name="profileId" nullable="false" required="true" type="string"/>
+                     <field name="profileJobId"
+                            nullable="false"
+                            required="true"
+                            type="string"/>
+                     <field name="profileJobStatus"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="sessionId" nullable="false" required="true" type="string"/>
+                     <field name="bearerToken"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Dataset">
+                  <description>Process object containing key metadata elements for Informatica Catalog datasets</description>
+                  <detail>
+                     <field name="datasetId" nullable="true" required="false" type="string"/>
+                     <field name="datasetName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="datasetDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="datasetDataOwner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="datasetBusinessDataSteward"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="authorization"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="countOfRules"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="dataElements"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">sub_dataElements</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="sub_dataElements">
+                  <description>Process object containing column details for Dataset Data Elements.</description>
+                  <detail>
+                     <field name="dataElementName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="dataElementType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="dataElementSource"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="dataElementId"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="dataElementPosition"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              xmlns:aetgt="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                              isByCopy="true"
+                              name="CatalogSource">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="catalogSourceReference"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceSupplementCertified"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceModifiedBy"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceClassType"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceOrigin"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceType"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceAssetLifecycle"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceResourceName"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceExternalId"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceName"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceModifiedOn"
+                            nullable="true"
+                            required="false"
+                            type="double">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceStakeholderIdentity"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceLastScannedOn"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceCreatedBy"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceUnqualifiedTypeName"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceIdentity"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceLocation"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceElementType"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceLastScannedBy"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceParentLocation"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceResourceType"
+                            nullable="true"
+                            required="false"
+                            type="string">
+                        <options/>
+                     </field>
+                     <field name="catalogSourceCreatedOn"
+                            nullable="true"
+                            required="false"
+                            type="double">
+                        <options/>
+                     </field>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>0SROXTukTKYeF0BowAvKMU</types1:GUID>
+      <types1:DisplayName>SvcCon-IICS-Authentication</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:06.842Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

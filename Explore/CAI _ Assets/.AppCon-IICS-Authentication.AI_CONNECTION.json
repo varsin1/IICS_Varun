@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "7jjtWfqUJFqhX7USfgaMWl",
+    "name" : "AppCon-IICS-Authentication",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "kOJ2oTVMTonQYWe-gt-13190523-2024-10-10T17:16:46.163Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "App Connection to the Svc-IICS-Authentication service connection.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-10T17:38:07.503Z",
+  "objectRefs" : [ {
+    "id" : "0SROXTukTKYeF0BowAvKMU",
+    "name" : "SvcCon-IICS-Authentication",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "qCaaa-gt-13081460-2024-10-10T17:16:45.273Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Service Connection to the Informatica Data Management Cloud for login and authentication.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CAI _ Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

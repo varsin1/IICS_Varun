@@ -1,0 +1,71 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>jBeE1KoJBUhtyco-gt-12123494-2023-03-12T20:18:11.156Z::conn.xml</types1:EntryId>
+      <types1:Name>oracleJDBC</types1:Name>
+      <types1:ParentFlowIds>BlTgaaaa-gt-6115847-2023-03-12T20:18:11.438Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:sribatsa-redhat.informatica.com</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2023-03-12T20:18:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="oracleJDBC"
+                     label="oracleJDBC"
+                     name="oracleJDBC">
+            <description/>
+            <tags>.agent:sribatsa-redhat.informatica.com</tags>
+            <agent>sribatsa-redhat.informatica.com</agent>
+            <attributes>
+               <attribute encrypted="false"
+                          name="JDBC Connection URL"
+                          value="jdbc:oracle:thin:@SUGLXDB23/PDB01"/>
+               <attribute encrypted="false"
+                          name="JDBC Jar Directory"
+                          value="/apps/infaagent/apps/process-engine/ext"/>
+               <attribute encrypted="false"
+                          name="JDBC Driver Class Name"
+                          value="oracle.jdbc.driver.OracleDriver"/>
+               <attribute encrypted="false" name="Schema" value="c03066279"/>
+               <attribute encrypted="false" name="Username" value="c03066279"/>
+               <attribute encrypted="true" name="Password" value=""/>
+               <attribute encrypted="false" name="Object Filter" value=""/>
+               <attribute encrypted="false" name="TimeZone" value="Default"/>
+               <attribute encrypted="false" name="$read-Isolation Level" value="None"/>
+               <attribute encrypted="false"
+                          name="$read-Override Isolation Level"
+                          value="false"/>
+               <attribute encrypted="false" name="$write-Number of retries" value="5"/>
+               <attribute encrypted="false" name="$write-Retry wait period" value="3"/>
+            </attributes>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="true"
+                           plugin="ICS"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="true"
+                           supportsOData="true"
+                           type="GenericJDBCAdapter"
+                           uuid="33ec8fc7-dc6d-4d2e-9f6f-a950669a62d1">
+               <description>JDBC  Generic Cloud Adapter</description>
+            </javaConnector>
+            <odata>
+               <enabled>true</enabled>
+               <cloudAccessEnabled>true</cloudAccessEnabled>
+               <allowedUsers>
+                  <user>GcsCloudAdminSri</user>
+               </allowedUsers>
+            </odata>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>i7eLx0WYbA1ediPaLMPRmG</types1:GUID>
+      <types1:DisplayName>oracleJDBC</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:07.063Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

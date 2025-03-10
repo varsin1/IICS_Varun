@@ -1,0 +1,317 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>LruB3uopz4KhPVE-gt-67694610-2024-05-21T15:41:22.602Z::pd.xml</types1:EntryId>
+      <types1:Name>pm-testing</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-05-21T15:41:23Z</types1:CreationDate>
+      <types1:ModifiedBy>vasingh@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2024-05-22T18:31:05Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>vasingh@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2024-05-22T18:31:09Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.pm-testing/pm-testing.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="pm-testing"
+                  name="pm-testing"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Phone" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="phoneValidation" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="cleansedPhone" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="inPhone" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="h0ff7b040-6f26-4db0-9082-501e0a2583a1">
+               <start id="rc10fd73a-d073-492a-a9e0-c5cf6276a308">
+                  <link id="jd9535be4-a224-46f0-9375-01121ec864c2"
+                        targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignment9924d935-b0a3-4f56-874c-cc9b6626aea0"/>
+               </start>
+               <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignment9924d935-b0a3-4f56-874c-cc9b6626aea0">
+                  <title>assgn_InPhone</title>
+                  <operation source="field" to="temp.inPhone">input.Phone</operation>
+                  <link id="z4328836d-8302-41f4-971b-505799122c46"
+                        targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignment58dcc835-8f63-4baf-bc8c-14c8eaca83dc"/>
+               </assignment>
+               <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignment58dcc835-8f63-4baf-bc8c-14c8eaca83dc">
+                  <title>assgn_CheckAlphabets</title>
+                  <operation source="formula" to="output.phoneValidation">
+                     <expression language="XQuery">if(fn:matches( $temp.inPhone , '[a-zA-Z]', 'm')) then 'true' else 'false'</expression>
+                  </operation>
+                  <link id="w09441f93-976c-424a-b65e-9a1dcabc614e"
+                        targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decisiond2de36f8-b555-4699-8ebb-4a1ddadfa715"/>
+               </assignment>
+               <container id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decisiond2de36f8-b555-4699-8ebb-4a1ddadfa715"
+                          type="exclusive">
+                  <title>phone Validation</title>
+                  <flow id="h6aad5c8d-7a3a-41f8-9f2b-761d32d080a0">
+                     <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignmentd5201e5c-f661-4ae9-8574-0e7a06b5b648">
+                        <title>assgn_ReplaceDigits</title>
+                        <operation source="formula" to="input.Phone">
+                           <expression language="XQuery">fn:replace($temp.inPhone, '/[^\d.]+/', '')</expression>
+                        </operation>
+                        <link id="we2fb0128-29ee-4c11-acfd-43c8449ed618"
+                              targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignment6e6d6d7a-0a60-4778-8b02-e229b3fadeb2"/>
+                     </assignment>
+                     <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignment6e6d6d7a-0a60-4778-8b02-e229b3fadeb2">
+                        <title>assgn_LenGtr7</title>
+                        <operation source="formula" to="output.phoneValidation">
+                           <expression language="XQuery">if(fn:string-length ( $input.Phone ) &gt;= 8) then 'true' else 'false'</expression>
+                        </operation>
+                        <link id="d0905616f-0367-4cb4-8573-8922f1a90be6"
+                              targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decisionff278162-56b0-4cee-9c46-3a0dabf75342"/>
+                     </assignment>
+                     <container id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decisionff278162-56b0-4cee-9c46-3a0dabf75342"
+                                type="exclusive">
+                        <title>phone Validation</title>
+                        <flow id="t4df900c5-d4e4-4cdb-b73a-4cca0c8c6228">
+                           <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignment1acdd704-0bb6-4a60-a64e-d6dd86805241">
+                              <title>Assignment to phoneValidation</title>
+                              <operation source="formula" to="output.phoneValidation">
+                                 <expression language="XQuery">if(fn:string-length ( $input.Phone ) = 10 and $input.Country = 'US')
+then 'true'
+else 'false'</expression>
+                              </operation>
+                              <link id="j4e76f49f-ebe3-40b6-96b6-f0a35b6a102c"
+                                    targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decisionf2b5fec4-4cf6-4fa0-b533-094c07ef9830"/>
+                           </assignment>
+                           <container id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decisionf2b5fec4-4cf6-4fa0-b533-094c07ef9830"
+                                      type="exclusive">
+                              <title>phone Validation</title>
+                              <flow id="a4e01e56c-8dd1-4b70-9453-10308a687fb6">
+                                 <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignmentc660fab0-bfcf-4811-aea1-fb9d0b408e5e">
+                                    <title>Assignment to cleansedPhone</title>
+                                    <operation source="formula" to="output.cleansedPhone">
+                                       <expression language="XQuery">'1' || $input.Phone</expression>
+                                    </operation>
+                                    <link id="b26b2192f-19cb-41f3-b8b3-c467e22e49eb"
+                                          targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-End16528006-51f4-4bb3-a134-e4dfe748d393"/>
+                                 </assignment>
+                                 <end id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-End16528006-51f4-4bb3-a134-e4dfe748d393">
+                                    <title>Return US phone</title>
+                                 </end>
+                              </flow>
+                              <flow id="o95d20bad-81c6-4c8c-b475-e6939c01dd7e">
+                                 <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignment706b47c6-2bc9-4172-89f6-29c4eebb2dee">
+                                    <title>Assignment to phoneValidation</title>
+                                    <operation source="formula" to="output.phoneValidation">
+                                       <expression language="XQuery">if(fn:string-length ( $input.Phone ) &gt; 10) then 
+'true' else 'false'</expression>
+                                    </operation>
+                                    <link id="ne325352c-f34c-46b1-b3ed-6e80acc5d701"
+                                          targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decision9f6a70e1-d94a-4c59-a578-96a12567a101"/>
+                                 </assignment>
+                                 <container id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decision9f6a70e1-d94a-4c59-a578-96a12567a101"
+                                            type="exclusive">
+                                    <title>phone Validation</title>
+                                    <flow id="u904dbfd0-7195-4c3b-a877-5fa8a7713218">
+                                       <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignmentc357f109-e6c3-4736-b1ae-94da44d04c4b">
+                                          <title>Assignment to cleansedPhone</title>
+                                          <operation source="field" to="output.cleansedPhone">input.Phone</operation>
+                                          <link id="n2c69489d-dd20-49ce-9c56-54ffa182fc46"
+                                                targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-End294b9ec9-330c-4638-ab20-c14ebf8f4eef"/>
+                                       </assignment>
+                                       <end id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-End294b9ec9-330c-4638-ab20-c14ebf8f4eef">
+                                          <title>End 1</title>
+                                       </end>
+                                    </flow>
+                                    <flow id="a52bcf306-56e6-4136-8678-aa13501dae30">
+                                       <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignment5165da4b-5a82-4c2c-b2c2-35cdd065c80b">
+                                          <title>Assignment to phoneValidation</title>
+                                          <operation source="formula" to="output.phoneValidation">
+                                             <expression language="XQuery">if(fn:string-length ( $input.Phone ) &lt;= 10 and fn:string-length ( $input.Country ) &gt; 0)
+then 'true'
+else 'false'</expression>
+                                          </operation>
+                                          <link id="o577790e2-ac41-463f-bcd9-9020fb45c59c"
+                                                targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decision73075758-d370-4696-beff-d87307d9b958"/>
+                                       </assignment>
+                                       <container id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Decision73075758-d370-4696-beff-d87307d9b958"
+                                                  type="exclusive">
+                                          <title>phone Validation</title>
+                                          <flow id="c947a2d57-6cbd-4d41-8bb7-ceeb0f598c2e">
+                                             <assignment id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Assignmentc365cb91-2383-4522-82a8-05a899bd2207">
+                                                <title>Assignment to cleansedPhone</title>
+                                                <operation source="field" to="output.cleansedPhone">output.cleansedPhone</operation>
+                                                <link id="vecb6b59d-169f-4de2-839b-45164b3ef96c"
+                                                      targetId="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Endd04f3294-00a2-4c37-aa52-5ab1b1aab764"/>
+                                             </assignment>
+                                             <end id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Endd04f3294-00a2-4c37-aa52-5ab1b1aab764">
+                                                <title>End 2</title>
+                                             </end>
+                                          </flow>
+                                          <flow id="m4b795c85-f7c7-4722-b83d-5783c3820f7a">
+                                             <throw id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Throw40593571-95c1-4216-b1ed-dec94a27707e">
+                                                <title>Phone numbers less than 10 characters require a country</title>
+                                                <throwInput>
+                                                   <parameter name="code" source="constant" updatable="true">400</parameter>
+                                                   <parameter name="detail" source="field" updatable="true">temp.inPhone</parameter>
+                                                   <parameter name="reason" source="constant" updatable="true">Phone numbers less than 10 characters require a country</parameter>
+                                                </throwInput>
+                                             </throw>
+                                          </flow>
+                                          <link id="l0569e68a-9447-4cec-9e00-f9de69cb4058"
+                                                targetId="c947a2d57-6cbd-4d41-8bb7-ceeb0f598c2e"
+                                                type="containerLink">
+                                             <condition source="formula">
+                                                <function name="contains">
+                                                   <arg name="left">{$output.phoneValidation}</arg>
+                                                   <arg name="right">true</arg>
+                                                </function>
+                                             </condition>
+                                          </link>
+                                          <link id="i1b560d55-8f84-4355-82fa-3ffee924e266"
+                                                targetId="m4b795c85-f7c7-4722-b83d-5783c3820f7a"
+                                                type="containerLink"/>
+                                       </container>
+                                    </flow>
+                                    <link id="o07ba48a3-96e2-4f61-a0dc-36422620b44e"
+                                          targetId="u904dbfd0-7195-4c3b-a877-5fa8a7713218"
+                                          type="containerLink">
+                                       <condition source="formula">
+                                          <function name="contains">
+                                             <arg name="left">{$output.phoneValidation}</arg>
+                                             <arg name="right">true</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="cbf273fa7-9de0-4fb7-aa23-8bf731b2f506"
+                                          targetId="a52bcf306-56e6-4136-8678-aa13501dae30"
+                                          type="containerLink"/>
+                                 </container>
+                              </flow>
+                              <link id="dc90be2df-78e8-4aaf-9ea0-ec4d53267165"
+                                    targetId="a4e01e56c-8dd1-4b70-9453-10308a687fb6"
+                                    type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.phoneValidation}</arg>
+                                       <arg name="right">true</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="v1940a226-95fc-4232-a8fd-b80c39a8338f"
+                                    targetId="o95d20bad-81c6-4c8c-b475-e6939c01dd7e"
+                                    type="containerLink"/>
+                           </container>
+                        </flow>
+                        <flow id="jebb07f99-118c-4865-a1c9-3581ad985885">
+                           <throw id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Throwc86976c5-41eb-459e-ad4d-d5b0360df63e">
+                              <title>Phone must be at least 8 characters</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">400</parameter>
+                                 <parameter name="detail" source="constant" updatable="true"/>
+                                 <parameter name="reason" source="constant" updatable="true">Phone must be at least 8 characters</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="affe9d44c-c5d8-4b82-b723-2c67fe236bea"
+                              targetId="t4df900c5-d4e4-4cdb-b73a-4cca0c8c6228"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.phoneValidation}</arg>
+                                 <arg name="right">true</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="m82b180ea-ccc4-405b-881f-0943dca46951"
+                              targetId="jebb07f99-118c-4865-a1c9-3581ad985885"
+                              type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="p04e63955-2005-403f-a09c-e81f11283410">
+                     <throw id="a16rtgK4pMH8VdhgKStrLxkM-a13fJB3kfvKcSlTxk3oPP9OJ-Throw3fc41de3-ab6a-4ae8-8a84-eb55be9eb7a8">
+                        <title>Phone cannot contain letters</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">400</parameter>
+                           <parameter name="detail" source="field" updatable="true">input.Phone</parameter>
+                           <parameter name="reason" source="constant" updatable="true">Phone cannot contain letters</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="j5bfa9a9c-20f3-4474-9b2f-16bbf7e6689c"
+                        targetId="h6aad5c8d-7a3a-41f8-9f2b-761d32d080a0"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.phoneValidation}</arg>
+                           <arg name="right">false</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="qe0a910e8-f6ed-45e2-9a78-7c4f877f14e5"
+                        targetId="p04e63955-2005-403f-a09c-e81f11283410"
+                        type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>3094eb71-c8a0-42e7-aa44-7d4197c86d8f</ns1:Id>
+               <ns1:Name>12345</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-05-21T15:41:23Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-05-22T18:30:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "Phone": "12345678",
+    "Country":"US"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>9Dcl6D7cMCRlNvBkaLROW0</types1:GUID>
+      <types1:DisplayName>pm-testing</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:06.816Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

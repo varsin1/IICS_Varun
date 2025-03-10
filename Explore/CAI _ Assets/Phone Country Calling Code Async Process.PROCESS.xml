@@ -1,0 +1,455 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>5T3jFIMeINciZBp-gt-22552027-2024-06-06T22:19:27.915Z::pd.xml</types1:EntryId>
+      <types1:Name>Phone_Country_Calling_Code_Async_Process</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-06-06T22:19:28Z</types1:CreationDate>
+      <types1:ModifiedBy>vasingh@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2024-06-11T20:02:13Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>vasingh@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2024-06-11T20:02:15Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Phone_Country_Calling_Code_Async_Process/Phone_Country_Calling_Code_Async_Process.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Phone Country Calling Code Async Process"
+                  name="Phone_Country_Calling_Code_Async_Process"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="CountryPhoneList"
+                          required="true"
+                          type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:obj_Phone_Country_Validation</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1p90gfPD4s5drnvXwPa50k</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="uuid" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="isValidPhone" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="phoneContainsLetters" type="boolean">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                  </options>
+               </field>
+               <field description="" name="phoneLength" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="callDaaS" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="isUSorCA" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="countryPhone" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:obj_Phone_Country_Validation</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1p90gfPD4s5drnvXwPa50k</option>
+                  </options>
+               </field>
+               <field description="" name="phone" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="validatedCountryPhoneList" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:obj_Phone_Country_Validation</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1p90gfPD4s5drnvXwPa50k</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowedUsers>
+                     <user>vasingh@informatica.com</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="u0b52801a-a108-401b-81bd-4d605a8812c8">
+               <start id="h04320db9-7830-4785-b3c3-578fb0c35da1">
+                  <link id="a677702e8-2e8c-40e7-a544-e382ad935946"
+                        targetId="a1cKxiDzWcLQti8wTpek5Z43-Decision092cb325-c558-4fe5-85c4-d86a486dd564"/>
+               </start>
+               <container id="a1cKxiDzWcLQti8wTpek5Z43-Decision092cb325-c558-4fe5-85c4-d86a486dd564"
+                          type="exclusive">
+                  <title>Country Phone List</title>
+                  <flow id="te322e134-fa9d-4f61-ad7a-3152d9129b4a">
+                     <end id="a1cKxiDzWcLQti8wTpek5Z43-End9628a1cc-5d54-49d3-8fe4-7047e5c7edf3">
+                        <title>400</title>
+                        <httpStatus>400</httpStatus>
+                     </end>
+                  </flow>
+                  <flow id="i29fbb0d7-f00b-4198-96ae-94e25c09de7d">
+                     <link id="d9d866eec-0ed5-45a6-a8ee-88d006ca8344"
+                           targetId="a1cKxiDzWcLQti8wTpek5Z43-Decision092cb325-c558-4fe5-85c4-d86a486dd564"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="f166f2529-7f5b-4e9f-9f4b-1d4c77c62d60"
+                        targetId="te322e134-fa9d-4f61-ad7a-3152d9129b4a"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$input.CountryPhoneList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="c177b8504-6743-4073-b97e-994a91fff129"
+                        targetId="i29fbb0d7-f00b-4198-96ae-94e25c09de7d"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$input.CountryPhoneList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="mb230ba3f-2ca6-4322-824b-84cc66663ec0"
+                        targetId="a1cKxiDzWcLQti8wTpek5Z43-Assignment06c87340-6df0-4d7c-92e9-b7f40824517d"/>
+               </container>
+               <container id="a1cKxiDzWcLQti8wTpek5Z43-Decision945f9fa2-2846-42f7-82a1-0769b5a5873b"
+                          type="exclusive">
+                  <title>Country Phone List</title>
+                  <flow id="m7df6106e-35ed-4ce7-80ef-2e6defbc5a14">
+                     <link id="u48b48b33-8012-46e8-92ea-c2cf13feae4f"
+                           targetId="a1cKxiDzWcLQti8wTpek5Z43-Decision945f9fa2-2846-42f7-82a1-0769b5a5873b"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="nd603e208-472c-4656-81f8-ea3c4628dde0">
+                     <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignment2dfba775-4e65-4bd5-9581-7a0b36ae6ab5">
+                        <title>Assignment to countryPhone</title>
+                        <operation source="formula" to="temp.countryPhone">
+                           <expression language="XQuery">list:head( $input.CountryPhoneList )</expression>
+                        </operation>
+                        <link id="t3e561999-90f2-481e-a4c6-c60ed9dbfdf7"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-Assignment95c8c6c6-e47d-4588-8554-dd2a7700b769"/>
+                     </assignment>
+                     <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignment95c8c6c6-e47d-4588-8554-dd2a7700b769">
+                        <title>Assignment to phone</title>
+                        <operation source="formula" to="temp.phone">
+                           <expression language="XQuery">$temp.countryPhone.Phone</expression>
+                        </operation>
+                        <link id="yf7a36596-ef7d-4f5a-bb76-9f49e8790062"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-Assignment21939bb9-480e-4a43-92bf-268f116dbee6"/>
+                     </assignment>
+                     <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignment21939bb9-480e-4a43-92bf-268f116dbee6">
+                        <title>Replace non numeric phone - phone</title>
+                        <operation source="formula" to="temp.phone">
+                           <expression language="XQuery">fn:replace($temp.countryPhone.Phone, '[^\d.]+', '')</expression>
+                        </operation>
+                        <link id="w8ff712b2-dd65-4edf-a0d6-0018229e9dfb"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-Assignment14881e19-d000-4c7a-9f5a-26771dec614c"/>
+                     </assignment>
+                     <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignment14881e19-d000-4c7a-9f5a-26771dec614c">
+                        <title>Assignment to phoneLength</title>
+                        <operation source="formula" to="temp.phoneLength">
+                           <expression language="XQuery">fn:string-length ( $temp.countryPhone.Phone )</expression>
+                        </operation>
+                        <link id="o5d419cc5-2598-4910-a545-fa9676f851c4"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-Assignment183faebf-a9e8-4907-badf-b814ab0cccaa"/>
+                     </assignment>
+                     <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignment183faebf-a9e8-4907-badf-b814ab0cccaa">
+                        <title>Length check - isValidPhone</title>
+                        <operation source="formula" to="temp.isValidPhone">
+                           <expression language="XQuery">if($temp.phoneLength &gt; 9 and $temp.phoneLength &lt; 19) then 'true' else 'false'</expression>
+                        </operation>
+                        <link id="n479adb21-c86e-499b-bd0b-57e091cdfd27"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-a10KiXziciXWNiSo4rZL24UO-Decision97878c3b-ccf9-402f-aa6d-0abe67589a5e"/>
+                     </assignment>
+                     <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignment7f9fc509-0c7b-4266-9c4d-3ce3a552648a">
+                        <title>Assignment to validatedCountryPhoneList</title>
+                        <operation source="formula" to="temp.validatedCountryPhoneList">
+                           <expression language="XQuery">list:append( $temp.validatedCountryPhoneList , $temp.countryPhone )</expression>
+                        </operation>
+                        <link id="ma8e5cf34-a388-46fc-a1df-9b4ecadbd632"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-Assignmentdab01c0c-0e0a-4311-b09e-5fde718df3ba"/>
+                     </assignment>
+                     <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignmentdab01c0c-0e0a-4311-b09e-5fde718df3ba">
+                        <title>Assignment to CountryPhoneList</title>
+                        <operation source="formula" to="input.CountryPhoneList">
+                           <expression language="XQuery">list:tail( $input.CountryPhoneList )</expression>
+                        </operation>
+                        <link id="f374f7a62-1fa0-47df-a127-dd9d6700046e"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-Jumpca15c6fe-27da-428a-8021-7e90d4ce31be"/>
+                     </assignment>
+                     <container id="a1cKxiDzWcLQti8wTpek5Z43-a10KiXziciXWNiSo4rZL24UO-Decision97878c3b-ccf9-402f-aa6d-0abe67589a5e"
+                                type="exclusive">
+                        <title>isValidPhone</title>
+                        <flow id="abaac347c-3fa9-4ec2-a355-023aa1299c46">
+                           <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignmentf9a48880-b98b-4bf2-b356-bb76f4e85b50">
+                              <title>Length and country check - isValidPhone</title>
+                              <operation source="formula" to="temp.isValidPhone">
+                                 <expression language="XQuery">if($temp.phoneLength &gt; 10 or ($temp.phoneLength = 10 and fn:string-length ( $temp.countryPhone.Country ) &gt; 0)) then 'true' else 'false'</expression>
+                              </operation>
+                           </assignment>
+                           <link id="qfeddc974-cb02-45e1-9947-2382cd330fb7"
+                                 targetId="a1cKxiDzWcLQti8wTpek5Z43-a10KiXziciXWNiSo4rZL24UO-Decision97878c3b-ccf9-402f-aa6d-0abe67589a5e"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="m6e5d098a-20d9-4962-8895-0331d7908a3e">
+                           <throw id="a1cKxiDzWcLQti8wTpek5Z43-a10KiXziciXWNiSo4rZL24UO-Throw29f6bd61-f69f-4237-9b83-c335f64c2675">
+                              <title>Invalid phone length</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">400</parameter>
+                                 <parameter name="detail" source="field" updatable="true">temp.countryPhone</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">Phone digit length must be between 10 and 18</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="b033c1e35-6e1c-4b36-a750-478e654b7f2a"
+                              targetId="abaac347c-3fa9-4ec2-a355-023aa1299c46"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$temp.isValidPhone}</arg>
+                                 <arg name="right">true</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ze8abf7c9-0171-4568-9dde-c9c809ca7895"
+                              targetId="m6e5d098a-20d9-4962-8895-0331d7908a3e"
+                              type="containerLink"/>
+                        <link id="m53fbb586-4851-49b9-a3ec-8c727a639bfe"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-Decision6e84888b-c31e-4fa4-8fc7-15425c4bb2ac"/>
+                     </container>
+                     <container id="a1cKxiDzWcLQti8wTpek5Z43-Decision6e84888b-c31e-4fa4-8fc7-15425c4bb2ac"
+                                type="exclusive">
+                        <title>isValidPhone</title>
+                        <flow id="g64c2dd60-bf11-49c0-bae8-e70b777dcf60">
+                           <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignment9030b8bd-df59-4942-b5d4-09801154eef1">
+                              <title>Assignment to isUSorCA</title>
+                              <operation source="formula" to="temp.isUSorCA">
+                                 <expression language="XQuery">if(($temp.phoneLength = 10 or $temp.phoneLength = 11) and ($temp.countryPhone.Country = 'US' or $temp.countryPhone.Phone = 'CA')) then 'true' else 'false'</expression>
+                              </operation>
+                           </assignment>
+                           <link id="ad5cbe16c-4781-417c-af01-d77332546ba1"
+                                 targetId="a1cKxiDzWcLQti8wTpek5Z43-Decision6e84888b-c31e-4fa4-8fc7-15425c4bb2ac"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="of661c9fa-46c2-4a8f-aa1b-0673ddd61d9a">
+                           <throw id="a1cKxiDzWcLQti8wTpek5Z43-Throwa20dd800-d2ad-4d36-8f75-54b94f624280">
+                              <title>Country is required</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">400</parameter>
+                                 <parameter name="detail" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.countryPhone.Phone</expression>
+                                 </parameter>
+                                 <parameter name="reason" source="constant" updatable="true">Country is required when phone digit length = 10</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="v1595e151-9870-43c7-b2ca-8212d5ed7ec0"
+                              targetId="g64c2dd60-bf11-49c0-bae8-e70b777dcf60"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$temp.isValidPhone}</arg>
+                                 <arg name="right">true</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="mc04b0479-7930-4eda-9c1a-92cb64a33792"
+                              targetId="of661c9fa-46c2-4a8f-aa1b-0673ddd61d9a"
+                              type="containerLink"/>
+                        <link id="f4a2d708c-74e7-474b-a0ee-c0106ae18ccc"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-Assignment7f9fc509-0c7b-4266-9c4d-3ce3a552648a"/>
+                     </container>
+                     <jumpTo id="a1cKxiDzWcLQti8wTpek5Z43-Jumpca15c6fe-27da-428a-8021-7e90d4ce31be">
+                        <link id="z57e5a82d-4199-49e5-bb3e-1430e376a3a3"
+                              targetId="a1cKxiDzWcLQti8wTpek5Z43-Decision945f9fa2-2846-42f7-82a1-0769b5a5873b"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="lc072a37c-536a-4c26-a661-10f4ad9d7c5c"
+                        targetId="m7df6106e-35ed-4ce7-80ef-2e6defbc5a14"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$input.CountryPhoneList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="r3d94fb5d-16e2-47be-a129-e2684de52ff1"
+                        targetId="nd603e208-472c-4656-81f8-ea3c4628dde0"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$input.CountryPhoneList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="o38210b5f-fba2-4ec6-a7ff-b6fdfdeec77d"
+                        targetId="a1cKxiDzWcLQti8wTpek5Z43-a10KiXziciXWNiSo4rZL24UO-End2c5b45c5-ddc5-46b3-9cf0-7adce50415e5"/>
+               </container>
+               <assignment id="a1cKxiDzWcLQti8wTpek5Z43-Assignment06c87340-6df0-4d7c-92e9-b7f40824517d">
+                  <title>Assignment to uuid</title>
+                  <operation source="formula" to="output.uuid">
+                     <expression language="XQuery">util:generateUUID()</expression>
+                  </operation>
+                  <link id="j7552ee59-e7b9-4a31-8e82-d8a837df41ed"
+                        targetId="a1cKxiDzWcLQti8wTpek5Z43-Decision945f9fa2-2846-42f7-82a1-0769b5a5873b"/>
+               </assignment>
+               <end id="a1cKxiDzWcLQti8wTpek5Z43-a10KiXziciXWNiSo4rZL24UO-End2c5b45c5-ddc5-46b3-9cf0-7adce50415e5">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>3ebc985d-3086-4e0e-b627-a631aab3d963</ns1:Id>
+               <ns1:Name>br-55</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-06-06T22:19:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-06-06T22:19:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+  "Country": "BR",
+    "Phone": "+55949532058"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>b7acd6c6-0eac-4d21-9c2a-62a502e02715</ns1:Id>
+               <ns1:Name>br-5511</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-06-06T22:19:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-06-06T22:19:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+  "Country": "BR",
+    "Phone": "+5511949532058"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f0306a4e-7389-4be3-a30c-26538347e8d4</ns1:Id>
+               <ns1:Name>country-phone-list</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-06-06T22:19:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-06-06T22:19:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "CountryPhoneList": [
+        {
+            "Country": "US",
+            "Phone": "206-486-2296"
+        }
+    ]
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>ab45eed4-3466-4956-b329-2bf262ed8a65</ns1:Id>
+               <ns1:Name>letters+nums</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-06-06T22:19:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-06-06T22:19:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+  "Country": "BR",
+    "Phone": "ab12cd"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3c24a85c-5a87-4b38-bdf2-a90b14ec1275</ns1:Id>
+               <ns1:Name>no-country-425</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-06-06T22:19:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-06-06T22:19:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "Phone": "1-425-314-6378"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>2ede2b1f-36a2-4a98-a3cb-9a97346cabb5</ns1:Id>
+               <ns1:Name>no-country-5511</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-06-06T22:19:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-06-06T22:19:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "Phone": "5511949532058"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>795bc30b-b6ef-4e3c-bce9-e3bf78d35a55</ns1:Id>
+               <ns1:Name>us-ext</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-06-06T22:19:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-06-06T22:19:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+  "Country": "US",
+    "Phone": "(954) 761-2222 ext. 3226"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>79fff3af-0d45-41d1-a68f-652ce8d5ee25</ns1:Id>
+               <ns1:Name>usa-425</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-06-06T22:19:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-06-06T22:19:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+  "Country": "USA",
+    "Phone": "425-314-6378"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>aHVIfyBqL4Sd71YsV7rOeL</types1:GUID>
+      <types1:DisplayName>Phone Country Calling Code Async Process</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:07.098Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,97 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wnHUPAZf5kck8jK-gt-1461520-2024-11-20T20:59:27.363Z::pd.xml</types1:EntryId>
+      <types1:Name>Test_CAI_Console_Error</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-11-20T20:59:27Z</types1:CreationDate>
+      <types1:ModifiedBy>vasingh@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2024-11-20T21:06:43Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>vasingh@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2024-11-20T21:06:50Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Test_CAI_Console_Error/Test_CAI_Console_Error.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="0dZyA2YYFKFe5ZgRP7skG3"
+                  displayName="Test_CAI_Console_Error"
+                  name="Test_CAI_Console_Error"
+                  overrideAPIName="false"
+                  processNamespace="urn:screenflow:process:">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="ERROR" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="v52fd5b00-c59e-4a31-91d0-1704505633b6">
+               <start id="f23b330ca-598b-4281-8188-68753c54b6e3">
+                  <link id="ufa4b6004-b697-4f60-ab9f-b77498ddc6a1"
+                        targetId="Assignment7c004ee9-17d8-433c-9f1a-699d64ebfa08"/>
+               </start>
+               <assignment id="Assignment7c004ee9-17d8-433c-9f1a-699d64ebfa08">
+                  <title>Check Error in CAI Console</title>
+                  <operation source="formula" to="output.ERROR">
+                     <expression language="XQuery">let $JSON_String := '{
+    "key_2023": "25177",
+    "key_2024": "25178"
+}'
+
+let $JSON := util:parseJSON($JSON_String)
+
+return fn:replace($JSON, "key_", "")</expression>
+                  </operation>
+                  <link id="a260b62ac-4e3e-4f8a-a970-a655bf5da39a"
+                        targetId="end-s827bb368-b05f-4ec6-bd78-bc3c2db66a6c"/>
+               </assignment>
+               <end id="end-s827bb368-b05f-4ec6-bd78-bc3c2db66a6c">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>b67cc41d-19a3-42c7-acae-2bea9259d3af</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>vasingh@informatica.com</ns1:CreatedBy>
+               <ns1:CreationDate>2024-11-20T21:20:20Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vasingh@informatica.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2024-11-20T21:20:20Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>0dZyA2YYFKFe5ZgRP7skG3</types1:GUID>
+      <types1:DisplayName>Test_CAI_Console_Error</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:06.909Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

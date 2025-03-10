@@ -1,0 +1,69 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>GJZx1XmgaabclvA-gt-13081477-2024-10-10T17:16:45.525Z::conn.xml</types1:EntryId>
+      <types1:Name>AppCon-IICS-Email</types1:Name>
+      <types1:ParentFlowIds>L2BX9cjIw8jIw8j-gt-13190569-2024-10-10T17:16:46.607Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Email app connection to send notification emails from InformaticaDev@FultonHogan.com</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:_1__A_USW1PF1PXZQB</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2024-10-10T17:16:46Z</types1:CreationDate>
+      <types1:ModifiedBy>vasingh@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2024-11-13T19:11:06Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>vasingh@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2024-11-13T19:11:12Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/AppCon-IICS-Email/AppCon-IICS-Email.conn.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AppCon-IICS-Email"
+                     label="AppCon-IICS-Email"
+                     name="AppCon-IICS-Email">
+            <description>Email app connection to send notification emails from InformaticaDev@FultonHogan.com</description>
+            <tags>.agent:_1__A_USW1PF1PXZQB</tags>
+            <agent>_1__A_USW1PF1PXZQB</agent>
+            <attributes>
+               <attribute encrypted="false" name="hostName" value="smtp.mail.yahoo.com"/>
+               <attribute encrypted="false" name="port" value="587"/>
+               <attribute encrypted="false"
+                          name="testToAddress"
+                          value="vasingh@informatica.com"/>
+               <attribute encrypted="false"
+                          name="fromAddress"
+                          value="idmc_processnotification@yahoo.com"/>
+            </attributes>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="false"
+                           cloudOnly="false"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           supportsPublishSkipMetadataRefresh="false"
+                           type="Email"
+                           uuid="9a8a03d0-0437-46c4-bedf-70acb4173c1f">
+               <description>Provides connections to email host servers.</description>
+            </javaConnector>
+            <authentication type="$infa_basicform">
+               <attributes>
+                  <attribute encrypted="false" name="Authentication" value="Enable"/>
+                  <attribute encrypted="false"
+                             name="username"
+                             value="idmc_processnotification@yahoo.com"/>
+                  <attribute encrypted="true" name="password" value=""/>
+                  <attribute encrypted="false" name="security" value="TLS"/>
+                  <attribute encrypted="false" name="connectionTimeout" value="30000"/>
+               </attributes>
+            </authentication>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>1kt9pLDvpMyimkeve3qya4</types1:GUID>
+      <types1:DisplayName>AppCon-IICS-Email</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-10T17:38:06.971Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

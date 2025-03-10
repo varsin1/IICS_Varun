@@ -1,26 +1,26 @@
 {
   "objectInfo" : {
-    "id" : "jNYeMeu9PSZia1rOULFKIf",
-    "name" : "ICAI-41027",
-    "type" : "PROCESS",
+    "id" : "744FWWTMlJ9l1gHXhmPPyC",
+    "name" : "GetAgentDetails",
+    "type" : "AI_SERVICE_CONNECTOR",
     "metadata" : {
       "modelVersion" : {
         "major" : 1,
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "L9UQAHzSZkL0jmu-gt-14134267-2023-10-12T19:17:47.608Z::pd.xml"
+        "repoHandle" : "ULqv1MuzBq695kc-gt-34329224-2022-12-07T19:41:24.752Z::svc.xml"
       },
       "contextAttributes" : null,
       "additionalInfo" : {
-        "description" : "",
+        "description" : "Get the Agent Details",
         "contentType" : "application/json; charset=utf-8",
         "documentState" : "VALID"
       }
     }
   },
   "dataFileExtension" : "xml",
-  "updateTime" : "2025-03-10T17:38:07.501Z",
+  "updateTime" : "2025-03-10T17:38:07.505Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false
