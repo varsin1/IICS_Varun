@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "83u16fYCIyKlfArBZr1ROE",
+    "name" : "Taskflow3",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "JeDuYZ06NYcmYsG-gt-44120638-2020-12-01T22:38:13.566Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-14T20:41:12.743Z",
+  "objectRefs" : [ {
+    "id" : "096g2VIyLhmkhI7ZM6mTsX",
+    "name" : "m_Mapping20_ParameterOverride -Taskflow",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010Q2I0Z00000000003R"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Snowflake"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
