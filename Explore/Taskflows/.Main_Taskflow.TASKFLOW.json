@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "82OmdmSJZJZb4e6TvW7Vs7",
+    "name" : "Main_Taskflow",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "fZVQU8lpDqotxGo-gt-26778163-2020-09-01T21:47:43.091Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-03-14T20:42:43.363Z",
+  "objectRefs" : [ {
+    "id" : "fuExqbwKRyYlD4DLeVrmCF",
+    "name" : "Tf_Snowflake_VariantColumn_Test",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "drhNzUzeA8rJ4pb-gt-26741815-2020-09-01T21:42:27.053Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Taskflows"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

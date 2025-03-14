@@ -1,0 +1,90 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fZVQU8lpDqotxGo-gt-26778163-2020-09-01T21:47:43.091Z::tf.xml</types1:EntryId>
+      <types1:Name>Main_Taskflow</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vasingh@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2020-09-01T21:47:43Z</types1:CreationDate>
+      <types1:ModifiedBy>vasingh@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2020-09-01T22:22:43Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>vasingh@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2020-09-01T22:23:01Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.Main_Taskflow/Main_Taskflow.tf.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="Main_Taskflow"
+                   name="Main_Taskflow"
+                   overrideAPIName="false">
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kekhbvdz" targetId="keki8jsh"/>
+               </start>
+               <eventContainer id="keki8jsh">
+                  <subflow id="kekhbvdy">
+                     <title>tf_Subtaskflow</title>
+                     <subflowGUID>fuExqbwKRyYlD4DLeVrmCF</subflowGUID>
+                     <subflowPath>Tf_Snowflake_VariantColumn_Test</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input/>
+                     <outputDef/>
+                  </subflow>
+                  <flow id="keki8jsj">
+                     <link id="keki8jsk" targetId="keki8jsh" type="containerLink"/>
+                  </flow>
+                  <flow id="keki8jsm">
+                     <service id="keki8jss">
+                        <title>Notification Task 1</title>
+                        <serviceName>emailNotificationService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="Email To" source="constant">vasingh@informatica.com</parameter>
+                           <parameter name="Email Cc" source="constant"/>
+                           <parameter name="Email Subject" source="constant">Taskflow: Failed</parameter>
+                           <parameter name="Email Content Type" source="constant">text</parameter>
+                           <parameter name="Email Body" source="constant"/>
+                        </serviceInput>
+                        <serviceOutput/>
+                     </service>
+                     <link id="keki8jsn" targetId="keki8jsh" type="containerLink"/>
+                  </flow>
+                  <link id="keki8jsi" targetId="keki8jsj" type="containerLink"/>
+                  <link id="keki8jtx" targetId="keki8jtw"/>
+                  <events>
+                     <catch faultField="faultInfo" id="keki8jsf" interrupting="true">
+                        <link id="keki8jsl" targetId="keki8jsm" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <throw id="keki8jtw">
+                  <title>Taskflow_Suspend_Throw</title>
+                  <throwInput>
+                     <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                     <parameter name="detail" source="constant" updatable="true"/>
+                     <parameter name="reason" source="constant" updatable="true"/>
+                  </throwInput>
+               </throw>
+            </flow>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>82OmdmSJZJZb4e6TvW7Vs7</types1:GUID>
+      <types1:DisplayName>Main_Taskflow</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-03-14T20:42:43.186Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
